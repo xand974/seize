@@ -12,3 +12,20 @@ export const fonts = {
   MontserratExtraBold: require("../assets/fonts/montserrat/Montserrat-ExtraBold.otf"),
   MontserratBlack: require("../assets/fonts/montserrat/Montserrat-Black.otf"),
 };
+
+export const mappedFonts = (): {
+  [key: string]: {
+    fontFamily: string;
+  };
+} => {
+  let obj = {} as { [key: string]: { fontFamily: string } };
+
+  for (const key of Object.keys(fonts)) {
+    if (!(key in obj)) {
+      obj[key] = {
+        fontFamily: key,
+      };
+    }
+  }
+  return obj;
+};

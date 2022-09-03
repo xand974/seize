@@ -16,7 +16,9 @@ import RoundedIcon from "components/UI/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 
 export default function LoginScreen({ navigation }: RouteType) {
-  const login = () => {};
+  const login = () => {
+    redirect(navigation, "GetStartedScreen");
+  };
   return (
     <MainLayout uri={COLORFUL_IMG}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={tw`h-[70%]`}>

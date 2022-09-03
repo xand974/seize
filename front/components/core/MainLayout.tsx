@@ -7,13 +7,14 @@ import { LinearGradient } from "expo-linear-gradient";
 type MainLayoutType = {
   children: React.ReactNode;
   uri?: string;
+  style?: string;
 };
-export default function MainLayout({ children, uri }: MainLayoutType) {
+export default function MainLayout({ children, uri, style }: MainLayoutType) {
   return (
     <View style={tw`flex-1`}>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
-        style={tw`bg-[#212121] h-full flex-1`}
+        style={tw`bg-[#212121] h-full flex-1 `}
       >
         {uri ? (
           <View style={styles.container__img}>
@@ -41,7 +42,9 @@ export default function MainLayout({ children, uri }: MainLayoutType) {
         ) : (
           <></>
         )}
-        <SafeAreaView>{children}</SafeAreaView>
+        <SafeAreaView style={tw`${style ? style : ""}`}>
+          {children}
+        </SafeAreaView>
       </ScrollView>
     </View>
   );

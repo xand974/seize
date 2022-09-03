@@ -1,9 +1,10 @@
 import { StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from "../../screens/Home/HomeScreen";
+import HomeScreen from "screens/Home/HomeScreen";
 import { createStackNavigator } from "@react-navigation/stack";
-import RegisterScreen from "../../screens/Register/RegisterScreen";
-import LoginScreen from "../../screens/Login/LoginScreen";
+import RegisterScreen from "screens/Register/RegisterScreen";
+import LoginScreen from "screens/Login/LoginScreen";
+import GetStarted from "screens/GetStarted/GetStarted";
 
 export default function MainRoutes() {
   const Stack = createStackNavigator();
@@ -22,11 +23,14 @@ export default function MainRoutes() {
           initialRouteName={user ? "HomeScreen" : "RegisterScreen"}
         >
           {user ? (
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Group>
+              <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            </Stack.Group>
           ) : (
             <Stack.Group>
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
+              <Stack.Screen name="GetStartedScreen" component={GetStarted} />
             </Stack.Group>
           )}
         </Stack.Navigator>

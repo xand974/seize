@@ -6,24 +6,26 @@ import { LinearGradient } from "expo-linear-gradient";
 type ButtonType = {
   text: string;
   onPress: any;
-  ctmStyle: string;
+  ctmStyle?: string;
 };
 export default function CtmButton({ text, onPress, ctmStyle }: ButtonType) {
   return (
-    <LinearGradient
-      start={{ x: 1, y: 0.1 }}
-      end={{ x: 0.1, y: 0.9 }}
-      locations={[0.3, 0.9]}
-      colors={["#060FE9", "#615eff"]}
-      style={tw`w-full flex-row justify-center  ${ctmStyle} `}
+    <TouchableOpacity
+      style={tw`flex-row justify-center items-center`}
+      onPress={onPress}
     >
-      <TouchableOpacity
-        style={tw`flex-row justify-center items-center`}
-        onPress={onPress}
+      <LinearGradient
+        start={{ x: 1, y: 0.1 }}
+        end={{ x: 0.1, y: 0.9 }}
+        locations={[0.3, 0.9]}
+        colors={["#060FE9", "#615eff"]}
+        style={tw`w-full flex-row justify-center items-center  ${
+          ctmStyle ? ctmStyle : ""
+        } `}
       >
         <Text style={tw`text-white text-[15px] shadow-md`}>{text}</Text>
-      </TouchableOpacity>
-    </LinearGradient>
+      </LinearGradient>
+    </TouchableOpacity>
   );
 }
 
