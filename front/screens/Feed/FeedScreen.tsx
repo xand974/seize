@@ -2,7 +2,7 @@ import { useLayoutEffect } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { RouteType } from "types/app.types";
 import tw from "twrnc";
-import { HeaderLeft, HeaderRight } from "./Header/Header";
+import { Header } from "./Header/Header";
 import Recommended from "./Recommended/Recommended";
 import { profilesRecommended } from "mock/data";
 import Card from "components/UI/Card";
@@ -18,8 +18,9 @@ export default function FeedScreen({ navigation }: RouteType) {
       headerStyle: {
         backgroundColor: "#0F1112",
       },
-      headerLeft: () => <HeaderLeft name="Malet" />,
-      headerRight: () => <HeaderRight />,
+      header: () => {
+        return <Header />;
+      },
       headerShadowVisible: false,
     };
     navigation.setOptions({
@@ -47,19 +48,21 @@ export default function FeedScreen({ navigation }: RouteType) {
       </View>
       <View style={tw`w-11/12 mx-auto mt-10`}>
         <ToggleButton setSection={setSectionSelected}></ToggleButton>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
-        <Text>dzdezdezz</Text>
+        <View style={tw`mt-6`}>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+          <Text>dzdezdezz</Text>
+        </View>
       </View>
     </ScrollView>
   );
