@@ -3,10 +3,10 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import CtmText from "../../core/CtmText";
 
-type ToggleButtonType = {
+type SwitchButtonType = {
   setSection: (section: string) => void;
 };
-export default function ToggleButton({ setSection }: ToggleButtonType) {
+export default function SwitchButton({ setSection }: SwitchButtonType) {
   const [buttonItems, setButtonItems] = useState([
     {
       title: "Top Lyrics",

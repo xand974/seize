@@ -3,8 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "../Profile/ProfileScreen";
 import SearchScreen from "../Search/SearchScreen";
 import FeedScreen from "../Feed/FeedScreen";
-import CtmIcon from "../../components/Icons/CtmIcon";
+import CtmIcon from "components/Icons/CtmIcon";
 import { RouteType } from "../../types/app.types";
+import WriteScreen from "../Write/WriteScreen";
+import CtaScreen from "../CTA/CtaScreen";
 
 export default function HomeScreen({ navigation }: RouteType) {
   const Tab = createBottomTabNavigator();
@@ -44,7 +46,7 @@ export default function HomeScreen({ navigation }: RouteType) {
         component={FeedScreen}
       />
       <Tab.Screen
-        name="AddScreen"
+        name="CtaScreen"
         options={{
           tabBarLabel: "",
           tabBarIcon: () => (
@@ -54,11 +56,11 @@ export default function HomeScreen({ navigation }: RouteType) {
               name="plus"
               size={20}
               color="black"
-              onPress={() => goTo("AddScreen")}
+              onPress={() => goTo("CtaScreen")}
             />
           ),
         }}
-        component={FeedScreen}
+        component={CtaScreen}
       />
       <Tab.Screen
         name="WriteScreen"
@@ -75,7 +77,7 @@ export default function HomeScreen({ navigation }: RouteType) {
             />
           ),
         }}
-        component={FeedScreen}
+        component={WriteScreen}
       />
       <Tab.Screen
         name="ProfileScreen"

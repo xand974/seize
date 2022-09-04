@@ -11,3 +11,33 @@ export const profilesRecommended: {
   { name: "poire" },
   { name: "test" },
 ];
+
+export const lyricsCategories = [
+  {
+    name: "Top des textes du moment",
+  },
+  {
+    name: "Mes favories",
+  },
+  {
+    name: "Love",
+  },
+  {
+    name: "Emotional",
+  },
+  {
+    name: "Dance",
+  },
+  {
+    name: "Ego Trip",
+  },
+  {
+    name: "Para Bailar",
+  },
+  {
+    name: "Ogang",
+  },
+  {
+    name: "Based on your preferences",
+  },
+];

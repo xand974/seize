@@ -5,6 +5,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import RegisterScreen from "screens/Register/RegisterScreen";
 import LoginScreen from "screens/Login/LoginScreen";
 import GetStarted from "screens/GetStarted/GetStarted";
+import SingScreen from "screens/Sing/SingScreen";
+import WriteScreen from "screens/Write/WriteScreen";
 
 export default function MainRoutes() {
   const Stack = createStackNavigator();
@@ -25,6 +27,7 @@ export default function MainRoutes() {
           {user ? (
             <Stack.Group>
               <Stack.Screen name="HomeScreen" component={HomeScreen} />
+              <Stack.Screen name="SingScreen" component={SingScreen} />
             </Stack.Group>
           ) : (
             <Stack.Group>
