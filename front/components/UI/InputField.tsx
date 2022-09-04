@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import tw from "twrnc";
 import defaultStyle from "../../styles/_globals";
-import CtmText from "./CtmText";
+import CtmText from "../core/CtmText";
 
 type InputFieldType = {
   title: string;

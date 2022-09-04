@@ -1,4 +1,8 @@
-export const profilesRecommended: { name: string; uri?: string }[] = [
+export const profilesRecommended: {
+  name: string;
+  uri?: string;
+  id?: string;
+}[] = [
   { name: "xand974", uri: "" },
   { name: "pop_smoke" },
   { name: "malet" },

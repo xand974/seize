@@ -1,10 +1,10 @@
 import React from "react";
-import CtmText from "components/UI/CtmText";
+import CtmText from "components/core/CtmText";
 import EntTypo from "react-native-vector-icons/Entypo";
 import { View } from "react-native";
 import tw from "twrnc";
-import CtmIcon from "components/UI/CtmIcon";
-import { CtmIconHost } from "../../../components/UI/CtmIcon";
+import CtmIcon from "components/Icons/CtmIcon";
+import { CtmIconHost } from "components/Icons/CtmIcon";
 
 export const HeaderLeft = ({ name }: { name: string }) => {
   return (

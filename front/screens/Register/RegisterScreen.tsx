@@ -7,11 +7,11 @@ import {
 import MainLayout from "components/core/MainLayout";
 import tw from "twrnc";
 import InputField from "components/UI/InputField";
-import CtmButton from "components/UI/Button";
+import CtmButton from "components/Buttons/ColorButton";
 import { RouteType } from "types/index";
-import RoundedIcon from "components/UI/RoundedIcon";
+import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
-import CtmText from "components/UI/CtmText";
+import CtmText from "components/core/CtmText";
 
 export default function RegisterScreen({ navigation }: RouteType) {
   const register = (e: Event) => {

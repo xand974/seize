@@ -11,7 +11,10 @@ export default function RoundedButton({
   children,
 }: RoundedButtonType) {
   return (
-    <TouchableOpacity style={tw`w-20 h-20 rounded-full overflow-hidden`}>
+    <TouchableOpacity
+      style={tw`w-20 h-20 rounded-full overflow-hidden`}
+      onPress={onPress}
+    >
       {children}
     </TouchableOpacity>
   );

@@ -29,7 +29,7 @@ export default function CtmText({
 }: CtmTextType) {
   return (
     <Text
-      style={tw.style(styles[type], `text-white ${style}`)}
+      style={tw.style(styles[type], `text-white ${style ? style : ""}`)}
       onPress={onPress}
     >
       {children}

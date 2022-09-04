@@ -1,12 +1,13 @@
 import { StyleSheet, View, Image, ScrollView } from "react-native";
 import tw from "twrnc";
-import CtmText from "components/UI/CtmText";
-import RoundedButton from "components/UI/RoundedButton";
+import CtmText from "components/core/CtmText";
+
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import { RouteType } from "types/app.types";
+import RoundedButton from "components/Buttons/RoundedButton";
 
 type RecommendedType = {
-  recommended: { name: string; uri?: string }[];
+  recommended: { name: string; uri?: string; id?: string }[];
   navigation: RouteType["navigation"];
 };
 export default function Recommended({
@@ -17,7 +18,7 @@ export default function Recommended({
     navigation.navigate("ProfileScreen");
   };
   return (
-    <ScrollView style={tw`h-full`}>
+    <View style={tw``}>
       <CtmText type="MontserratSemiBold" style="text-[18px] w-11/12 mx-auto">
         Recommandé
       </CtmText>
@@ -27,21 +28,25 @@ export default function Recommended({
         style={tw`flex-row mt-4`}
       >
         {recommended.map((item, id) => (
-          <View style={tw`items-center mx-2`}>
-            <RoundedButton onPress={goToProfile} key={id}>
+          <View style={tw`items-center mx-2`} key={id}>
+            <RoundedButton onPress={goToProfile}>
               <Image
                 resizeMode="cover"
                 style={tw`h-full w-full`}
                 source={{ uri: COLORFUL_IMG }}
               />
             </RoundedButton>
-            <CtmText type="MontserratLight" style="mt-2 text-[12px]">
+            <CtmText
+              type="MontserratLight"
+              style="mt-2 text-[12px]"
+              onPress={goToProfile}
+            >
               {item.name}
             </CtmText>
           </View>
         ))}
       </ScrollView>
-    </ScrollView>
+    </View>
   );
 }
 

@@ -9,12 +9,12 @@ import MainLayout from "components/core/MainLayout";
 import tw from "twrnc";
 import defaultStyle from "styles/_globals";
 import InputField from "components/UI/InputField";
-import CtmButton from "components/UI/Button";
 import { RouteType } from "types/app.types";
 import { redirect } from "helpers/utils.helpers";
-import RoundedIcon from "components/UI/RoundedIcon";
+import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
-import CtmText from "components/UI/CtmText";
+import CtmText from "components/core/CtmText";
+import CtmButton from "components/Buttons/ColorButton";
 
 export default function LoginScreen({ navigation }: RouteType) {
   const login = () => {
