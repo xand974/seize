@@ -8,6 +8,7 @@ import { profilesRecommended } from "mock/data";
 import Card from "components/UI/Card";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import Choices from "./Choices/Choices";
+import ToggleButton from "../../components/Buttons/ToggleButton";
 
 export default function FeedScreen({ navigation }: RouteType) {
   //#region UI HEADER
@@ -26,21 +27,39 @@ export default function FeedScreen({ navigation }: RouteType) {
     });
   }, []);
   //#endregion
-
+  const setSectionSelected = (section: string) => {
+    console.log(section);
+  };
   return (
     <ScrollView style={tw`bg-[#0F1112] h-full`}>
       <View style={tw`mx-auto mt-10`}>
         {/* RECOMMENDED SECTION*/}
-        <View>
+        <View style={tw``}>
           <Recommended
             navigation={navigation}
             recommended={profilesRecommended}
           ></Recommended>
           {/* CHOICES SECTION*/}
-          <View style={tw`w-full h-7/12 mt-10`}>
+          <View style={tw`w-full h-80 mt-10`}>
             <Choices></Choices>
           </View>
         </View>
+      </View>
+      <View style={tw`w-11/12 mx-auto mt-10`}>
+        <ToggleButton setSection={setSectionSelected}></ToggleButton>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
+        <Text>dzdezdezz</Text>
       </View>
     </ScrollView>
   );
