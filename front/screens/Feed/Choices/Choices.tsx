@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import Card from "components/UI/Card";
+import SimpleCard from "components/UI/Cards/SimpleCard";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import tw from "twrnc";
 import { RouteType } from "types/app.types";
@@ -11,18 +11,18 @@ export default function Choices({ navigation }: RouteType) {
   };
   return (
     <View style={tw`flex-row h-full`}>
-      <Card
+      <SimpleCard
         onPress={() => goTo("SingScreen")}
         size="Large"
         text={{ content: "INTERPRÊTER", style: "text-[17px]" }}
         image={{ uri: COLORFUL_IMG }}
-      ></Card>
-      <Card
+      ></SimpleCard>
+      <SimpleCard
         onPress={() => goTo("WriteScreen")}
         size="Large"
         text={{ content: "ÉCRIRE", style: "text-[17px]" }}
         image={{ uri: COLORFUL_IMG }}
-      ></Card>
+      ></SimpleCard>
     </View>
   );
 }

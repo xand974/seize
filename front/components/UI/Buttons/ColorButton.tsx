@@ -5,10 +5,10 @@ import { LinearGradient } from "expo-linear-gradient";
 
 type ButtonType = {
   text: string;
-  onPress: any;
+  onPress?: () => void;
   ctmStyle?: string;
 };
-export default function CtmButton({ text, onPress, ctmStyle }: ButtonType) {
+export default function ColorButton({ text, onPress, ctmStyle }: ButtonType) {
   return (
     <TouchableOpacity
       style={tw`flex-row justify-center items-center`}

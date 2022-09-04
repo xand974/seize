@@ -7,7 +7,7 @@ import Recommended from "./Recommended/Recommended";
 import { profilesRecommended } from "mock/data";
 import Choices from "./Choices/Choices";
 import SwitchButton from "components/UI/Buttons/SwitchButton";
-import LyricsCard from "../../components/UI/Cards/LyricsCard";
+import LyricsCard from "components/UI/Cards/LyricsCard";
 import SecondLayout from "components/core/SecondLayout";
 
 export default function FeedScreen({ navigation }: RouteType) {

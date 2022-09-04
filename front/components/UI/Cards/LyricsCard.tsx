@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import CtmText from "../../core/CtmText";
 import tw from "twrnc";
-import { COLORFUL_IMG } from "../../../helpers/assets.helpers";
+import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmIcon from "components/Icons/CtmIcon";
 
 type LyricsCardType = {

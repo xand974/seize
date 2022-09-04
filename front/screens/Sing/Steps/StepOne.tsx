@@ -5,7 +5,7 @@ import SecondLayout from "components/core/SecondLayout";
 import tw from "twrnc";
 import CtmText from "components/core/CtmText";
 import StepTitle from "components/UI/StepTitle/StepTitle";
-import Card from "components/UI/Card";
+import SimpleCard from "components/UI/Cards/SimpleCard";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import { RouteType } from "types/app.types";
 import { lyricsCategories } from "mock/data";
@@ -25,13 +25,13 @@ export default function StepOne({ navigation }: RouteType) {
         </CtmText>
         <View style={tw`mt-5`}>
           {lyricsCategories.map((item, id) => (
-            <Card
+            <SimpleCard
               key={id}
               onPress={() => nextStep()}
               image={{ uri: COLORFUL_IMG, style: "opacity-60" }}
               text={{ style: "text-center text-sm", content: item.name }}
               size="Small"
-            ></Card>
+            ></SimpleCard>
           ))}
         </View>
       </View>

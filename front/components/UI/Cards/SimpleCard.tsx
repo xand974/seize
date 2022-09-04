@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity, Image } from "react-native";
-import CtmText from "../core/CtmText";
+import CtmText from "../../core/CtmText";
 import tw from "twrnc";
 
 type CardType = {
@@ -14,7 +14,7 @@ type CardType = {
   };
   size: "Large" | "Small";
 };
-export default function Card({ onPress, image, text, size }: CardType) {
+export default function SimpleCard({ onPress, image, text, size }: CardType) {
   return (
     <TouchableOpacity
       onPress={onPress}
