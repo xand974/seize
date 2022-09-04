@@ -4,7 +4,7 @@ import CtmText from "components/core/CtmText";
 
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import { RouteType } from "types/app.types";
-import RoundedButton from "components/Buttons/RoundedButton";
+import RoundedButton from "components/UI/Buttons/RoundedButton";
 
 type RecommendedType = {
   recommended: { name: string; uri?: string; id?: string }[];

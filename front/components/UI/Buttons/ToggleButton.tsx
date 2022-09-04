@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
-import CtmText from "../core/CtmText";
+import CtmText from "../../core/CtmText";
 
 type ToggleButtonType = {
   setSection: (section: string) => void;

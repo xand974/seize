@@ -14,7 +14,7 @@ import { redirect } from "helpers/utils.helpers";
 import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmText from "components/core/CtmText";
-import CtmButton from "components/Buttons/ColorButton";
+import CtmButton from "components/UI/Buttons/ColorButton";
 
 export default function LoginScreen({ navigation }: RouteType) {
   const login = () => {

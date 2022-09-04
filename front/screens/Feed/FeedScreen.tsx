@@ -5,10 +5,9 @@ import tw from "twrnc";
 import { Header } from "./Header/Header";
 import Recommended from "./Recommended/Recommended";
 import { profilesRecommended } from "mock/data";
-import Card from "components/UI/Card";
-import { COLORFUL_IMG } from "helpers/assets.helpers";
 import Choices from "./Choices/Choices";
-import ToggleButton from "../../components/Buttons/ToggleButton";
+import ToggleButton from "components/UI/Buttons/ToggleButton";
+import LyricsCard from "../../components/UI/Cards/LyricsCard";
 
 export default function FeedScreen({ navigation }: RouteType) {
   //#region UI HEADER
@@ -46,22 +45,12 @@ export default function FeedScreen({ navigation }: RouteType) {
           </View>
         </View>
       </View>
-      <View style={tw`w-11/12 mx-auto mt-10`}>
+      <View style={tw`w-11/12 mx-auto mt-10 mb-20`}>
         <ToggleButton setSection={setSectionSelected}></ToggleButton>
-        <View style={tw`mt-6`}>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
-          <Text>dzdezdezz</Text>
+        <View style={tw`my-6`}>
+          <LyricsCard cardSize="Big"></LyricsCard>
+          <LyricsCard cardSize="Big"></LyricsCard>
+          <LyricsCard cardSize="Big"></LyricsCard>
         </View>
       </View>
     </ScrollView>

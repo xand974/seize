@@ -7,7 +7,7 @@ import {
 import MainLayout from "components/core/MainLayout";
 import tw from "twrnc";
 import InputField from "components/UI/InputField";
-import CtmButton from "components/Buttons/ColorButton";
+import CtmButton from "components/UI/Buttons/ColorButton";
 import { RouteType } from "types/index";
 import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";

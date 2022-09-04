@@ -31,6 +31,7 @@ type CtmIconType = {
   color?: string;
   onPress?: () => void;
   type: CtmIconHost;
+  parentStyle?: string;
 };
 export default function CtmIcon({
   name,
@@ -39,11 +40,14 @@ export default function CtmIcon({
   size,
   color,
   type,
+  parentStyle,
 }: CtmIconType) {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={tw` h-10 w-10 items-center justify-center rounded-full bg-[#212121] shadow-lg mr-3`}
+      style={tw` h-10 w-10 items-center justify-center rounded-full bg-[#212121] shadow-lg mr-3 ${
+        parentStyle ?? ""
+      }`}
     >
       <Icon
         type={type}

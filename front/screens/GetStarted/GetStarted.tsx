@@ -1,7 +1,7 @@
 import { StyleSheet, View, Image } from "react-native";
 import MainLayout from "components/core/MainLayout";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
-import CtmButton from "components/Buttons/ColorButton";
+import CtmButton from "components/UI/Buttons/ColorButton";
 import tw from "twrnc";
 import { LinearGradient } from "expo-linear-gradient";
 import { RouteType } from "types/app.types";
