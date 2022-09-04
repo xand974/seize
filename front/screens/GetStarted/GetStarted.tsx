@@ -1,14 +1,16 @@
-import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
-import MainLayout from "../../components/core/MainLayout";
-import { COLORFUL_IMG } from "../../helpers/assets.helpers";
-import CtmButton from "../../components/UI/Button";
+import { StyleSheet, View, Image } from "react-native";
+import MainLayout from "components/core/MainLayout";
+import { COLORFUL_IMG } from "helpers/assets.helpers";
+import CtmButton from "components/UI/Button";
 import tw from "twrnc";
-import font from "../../styles/_font";
 import { LinearGradient } from "expo-linear-gradient";
+import { RouteType } from "types/app.types";
+import CtmText from "../../components/UI/CtmText";
 
-export default function GetStarted() {
-  const start = () => {};
+export default function GetStarted({ navigation }: RouteType) {
+  const start = () => {
+    // TODO set current user to true (for first connection only)
+  };
   return (
     <MainLayout>
       <View style={tw`h-8/12 relative bottom-20`}>
@@ -32,23 +34,19 @@ export default function GetStarted() {
         ></LinearGradient>
       </View>
       <View style={tw`w-10/12 mx-auto flex-1`}>
-        <Text
-          style={tw.style(
-            font.MontserratBold.fontFamily,
-            `text-center text-white font-bold text-[30px] tracking-wide`
-          )}
+        <CtmText
+          type="MontserratBold"
+          style={`text-center text-white font-bold text-[30px] tracking-wide`}
         >
           Seize
-        </Text>
-        <Text
-          style={tw.style(
-            font.MontserratBold.fontFamily,
-            `text-center mt-10 text-white font-thin text-[16px] tracking-wide`
-          )}
+        </CtmText>
+        <CtmText
+          type="MontserratExtraLight"
+          style={`text-center mt-10 text-white font-thin text-[16px] tracking-wide`}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
           excepturi sed assumenda
-        </Text>
+        </CtmText>
 
         <CtmButton
           text="Get Started"

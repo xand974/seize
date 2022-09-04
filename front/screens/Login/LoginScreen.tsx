@@ -14,6 +14,7 @@ import { RouteType } from "types/app.types";
 import { redirect } from "helpers/utils.helpers";
 import RoundedIcon from "components/UI/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
+import CtmText from "components/UI/CtmText";
 
 export default function LoginScreen({ navigation }: RouteType) {
   const login = () => {
@@ -23,9 +24,9 @@ export default function LoginScreen({ navigation }: RouteType) {
     <MainLayout uri={COLORFUL_IMG}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={tw`h-[70%]`}>
         <View style={tw`w-10/12 mx-auto`}>
-          <Text style={tw.style(defaultStyle.text_color, `font-bold text-2xl`)}>
+          <CtmText style={`font-bold text-2xl`} type="MontserratBold">
             Welcome Back !
-          </Text>
+          </CtmText>
 
           <View style={tw`mt-10 w-full`}>
             <InputField title="Nom d'artiste" type="text" placeholder="sunly" />
@@ -41,25 +42,21 @@ export default function LoginScreen({ navigation }: RouteType) {
             />
           </View>
           <View style={tw`mt-7`}>
-            <Text style={tw.style(defaultStyle.text_color, `font-thin `)}>
+            <CtmText type="MontserratThin">
               Vous n'avez pas de compte ?{" "}
-              <Text
+              <CtmText
                 onPress={() => redirect(navigation, "RegisterScreen")}
-                style={tw`underline`}
+                style={`underline`}
+                type="MontserratMedium"
               >
                 Créer un compte
-              </Text>
-            </Text>
+              </CtmText>
+            </CtmText>
             <View style={tw`h-[500px] pt-10`}>
               <RoundedIcon iconName="google"></RoundedIcon>
-              <Text
-                style={tw.style(
-                  defaultStyle.text_color,
-                  `text-center font-thin`
-                )}
-              >
+              <CtmText style={`text-center`} type="MontserratThin">
                 Se connecter avec Google
-              </Text>
+              </CtmText>
             </View>
           </View>
         </View>

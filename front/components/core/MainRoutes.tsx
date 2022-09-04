@@ -8,7 +8,7 @@ import GetStarted from "screens/GetStarted/GetStarted";
 
 export default function MainRoutes() {
   const Stack = createStackNavigator();
-  const user = false;
+  const user = true;
 
   return (
     <NavigationContainer>
