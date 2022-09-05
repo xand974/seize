@@ -49,9 +49,9 @@ export default function FeedScreen({ navigation }: RouteType) {
       <View style={tw`w-11/12 mx-auto mt-10 mb-20`}>
         <SwitchButton setSection={setSectionSelected}></SwitchButton>
         <View style={tw`my-6`}>
-          <LyricsCard cardSize="Big"></LyricsCard>
-          <LyricsCard cardSize="Big"></LyricsCard>
-          <LyricsCard cardSize="Big"></LyricsCard>
+          <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
+          <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
+          <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
         </View>
       </View>
     </SecondLayout>

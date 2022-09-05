@@ -1,21 +1,23 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import CtmText from "../../core/CtmText";
 import tw from "twrnc";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmIcon from "components/Icons/CtmIcon";
+import { RouteType } from "types";
 
 type LyricsCardType = {
   cardSize: "Small" | "Medium" | "Big";
+  navigation: RouteType["navigation"];
 };
-export default function LyricsCard({ cardSize }: LyricsCardType) {
+export default function LyricsCard({ cardSize, navigation }: LyricsCardType) {
+  const goTo = (to: string) => {
+    switch (to) {
+      case "Profile":
+        navigation.navigate("ProfileScreen");
+        return;
+    }
+  };
   const setCardImgSize = () => {
     switch (cardSize) {
       case "Medium":
@@ -39,7 +41,8 @@ export default function LyricsCard({ cardSize }: LyricsCardType) {
       {/* HEADER */}
       <View style={tw`flex-row items-center mb-2`}>
         <TouchableOpacity
-          activeOpacity={1}
+          onPress={() => goTo("Profile")}
+          activeOpacity={0.1}
           style={tw`w-10 h-10 rounded-full mr-2 overflow-hidden`}
         >
           <Image
@@ -48,7 +51,9 @@ export default function LyricsCard({ cardSize }: LyricsCardType) {
             resizeMode="cover"
           />
         </TouchableOpacity>
-        <CtmText type="MontserratThin">pop_smoke</CtmText>
+        <CtmText type="MontserratThin" onPress={() => goTo("Profile")}>
+          pop_smoke
+        </CtmText>
         <CtmText style="mx-2" type="MontserratRegular">
           •
         </CtmText>

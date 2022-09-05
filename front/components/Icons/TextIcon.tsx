@@ -9,15 +9,19 @@ export default function TextIcon({
   iconName,
   iconType,
   text,
+  size,
 }: {
   iconType: CtmIconHost;
   iconName: string;
   text: string;
+  size?: number;
 }) {
   return (
     <View style={tw`flex-row items-center`}>
-      <CtmText type="MontserratThin">{text}</CtmText>
-      <SimpleIcon name={iconName} type={iconType} />
+      <CtmText type="MontserratThin" style="mr-1">
+        {text}
+      </CtmText>
+      <SimpleIcon size={size} name={iconName} type={iconType} />
     </View>
   );
 }
