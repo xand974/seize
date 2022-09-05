@@ -7,6 +7,10 @@ import LoginScreen from "screens/Login/LoginScreen";
 import GetStarted from "screens/GetStarted/GetStarted";
 import SingScreen from "screens/Sing/SingScreen";
 import LyricsScreen from "screens/Lyrics/LyricsScreen";
+import RecordScreen from "screens/Record/RecordScreen";
+import RenderingScreen from "screens/Rendering/RenderingScreen";
+import EditorScreen from "screens/Editor/EditorScreen";
+import ShareScreen from "screens/Share/ShareScreen";
 
 export default function MainRoutes() {
   const Stack = createStackNavigator();
@@ -29,9 +33,20 @@ export default function MainRoutes() {
               <Stack.Screen name="HomeScreen" component={HomeScreen} />
               <Stack.Screen name="SingScreen" component={SingScreen} />
               <Stack.Screen name="LyricsScreen" component={LyricsScreen} />
+              <Stack.Screen name="RecordScreen" component={RecordScreen} />
+              <Stack.Screen name="EditorScreen" component={EditorScreen} />
+              <Stack.Screen name="ShareScreen" component={ShareScreen} />
+              <Stack.Screen
+                name="RenderingScreen"
+                component={RenderingScreen}
+              />
             </Stack.Group>
           ) : (
-            <Stack.Group>
+            <Stack.Group
+              screenOptions={{
+                gestureEnabled: false,
+              }}
+            >
               <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
               <Stack.Screen name="LoginScreen" component={LoginScreen} />
               <Stack.Screen name="GetStartedScreen" component={GetStarted} />

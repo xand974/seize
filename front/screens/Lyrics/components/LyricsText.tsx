@@ -9,10 +9,9 @@ export default function LyricsText() {
     "Qu'est-ce qu'une ombre dans la nuit (dans la nuit)",
     "Qu'est-ce que la nuit pour la mort (pour la mort)",
     "Qu'est-ce que la mort pour un Homme libre",
-    `Une arme libre en dehors de son corps
-    J'me demande où ça nous mène`,
-    `Quand j'aime, j'y mets toute mon âme
-    J'ai vu le grand feu s'allumer`,
+    `Une arme libre en dehors de son corps, J'me demande où ça nous mène`,
+    `Quand j'aime, j'y mets toute mon âme`,
+    `J'ai vu le grand feu s'allumer`,
     "J'ai la flamme, j'y mets toute mon âme (mon âme)",
     "J'ai la flamme, j'y mets toute mon âme (mon âme)",
     "J'ai la flamme, j'y mets toute mon âme (mon âme)",

@@ -3,8 +3,8 @@ import SecondLayout from "components/core/SecondLayout";
 import StepTitle from "components/UI/StepTitle/StepTitle";
 import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
-import DetailCard from "components/UI/Cards/DetailCard";
-import { RouteType } from "../../../types/app.types";
+import DetailCard from "components/UI/Cards/DetailCard/DetailCard";
+import { RouteType } from "types/app.types";
 
 export default function StepTwo({ navigation }: RouteType) {
   return (
@@ -15,11 +15,7 @@ export default function StepTwo({ navigation }: RouteType) {
           2. Choose Lyrics
         </CtmText>
         <View style={tw`mt-5`}>
-          <DetailCard navigation={navigation}></DetailCard>
-          <DetailCard navigation={navigation}></DetailCard>
-          <DetailCard navigation={navigation}></DetailCard>
-          <DetailCard navigation={navigation}></DetailCard>
-          <DetailCard navigation={navigation}></DetailCard>
+          <DetailCard state="Lyrics" navigation={navigation}></DetailCard>
         </View>
       </View>
     </SecondLayout>

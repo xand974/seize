@@ -1,23 +1,37 @@
+import React from "react";
 import {
+  SafeAreaView,
   StyleSheet,
-  TouchableOpacity,
+  Text,
   View,
   Image,
   Dimensions,
   ScrollView,
 } from "react-native";
-import { RouteType } from "types/app.types";
+import LyricsHeader from "../Lyrics/components/Header";
 import tw from "twrnc";
-import SimpleIcon from "components/Icons/SimpleIcon";
-import CtmText from "components/core/CtmText";
-import TextIcon from "components/Icons/TextIcon";
-import { SafeAreaView } from "react-native";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
-import LyricsText from "./components/LyricsText";
-import ColorButton from "components/UI/Buttons/ColorButton";
-import LyricsHeader from "./components/Header";
+import { RouteType } from "../../types/app.types";
+import CtmText from "components/core/CtmText";
+import LyricsText from "screens/Lyrics/components/LyricsText";
+import RecordFooter from "./components/RecordFooter";
+import { useState } from "react";
+import { RecordState } from "types";
 
-export default function LyricsScreen({ navigation }: RouteType) {
+export default function RecordScreen({ navigation }: RouteType) {
+  const [isRecording, setIsRecording] = useState(false);
+  const setRecordAction = (action: RecordState) => {
+    switch (action) {
+      case "PlayBack":
+        return;
+      case "Validate":
+        navigation.navigate("EditorScreen");
+        return;
+      case "Play":
+        setIsRecording((prev) => !prev);
+        return;
+    }
+  };
   const goBack = () => {
     const canGoBack = navigation.canGoBack();
     if (!canGoBack) {
@@ -26,12 +40,8 @@ export default function LyricsScreen({ navigation }: RouteType) {
     }
     navigation.goBack();
   };
-
-  const nextStep = () => {
-    navigation.navigate("StepThreeScreen");
-  };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={tw`relative`}>
       <Image
         source={{ uri: DEFAULT_PERSON }}
         resizeMode="cover"
@@ -53,13 +63,13 @@ export default function LyricsScreen({ navigation }: RouteType) {
             </CtmText>
           </View>
           <LyricsText></LyricsText>
-          <ColorButton
-            onPress={() => nextStep()}
-            text="Choose"
-            ctmStyle="w-6/12 py-3 rounded-xl"
-          ></ColorButton>
         </View>
       </ScrollView>
+      <RecordFooter
+        type="record"
+        isRecording={isRecording}
+        setRecordAction={setRecordAction}
+      ></RecordFooter>
     </SafeAreaView>
   );
 }
