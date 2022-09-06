@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { useLayoutEffect } from "react";
 import { RouteType } from "types";
 import tw from "twrnc";
@@ -20,7 +20,7 @@ export default function ProfileScreen({ navigation }: RouteType) {
     console.log(section);
   };
   return (
-    <SecondLayout>
+    <SecondLayout style="my-10">
       <View style={tw`w-11/12 h-full mx-auto`}>
         {/* Header */}
         <View style={tw`w-full items-center mt-10`}>

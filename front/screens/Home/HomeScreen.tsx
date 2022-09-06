@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "../Profile/ProfileScreen";
 import SearchScreen from "../Search/SearchScreen";
@@ -20,6 +20,7 @@ export default function HomeScreen({ navigation }: RouteType) {
     <Tab.Navigator
       initialRouteName="FeedScreen"
       screenOptions={{
+        tabBarHideOnKeyboard: true,
         tabBarShowLabel: true,
         tabBarStyle: {
           backgroundColor: "transparent",

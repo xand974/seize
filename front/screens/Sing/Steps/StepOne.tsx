@@ -17,7 +17,7 @@ export default function StepOne({ navigation }: RouteType) {
     navigation.navigate("StepTwoScreen");
   };
   return (
-    <SecondLayout>
+    <SecondLayout style="mt-10">
       <View style={tw`w-11/12 mx-auto mt-10`}>
         <StepTitle purpleText="mood" lightText="Find your"></StepTitle>
         <CtmText type="MontserratMedium" style="mt-3">

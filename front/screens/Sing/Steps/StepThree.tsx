@@ -8,7 +8,7 @@ import { RouteType } from "types/app.types";
 
 export default function StepThree({ navigation }: RouteType) {
   return (
-    <SecondLayout>
+    <SecondLayout style="mt-10">
       <View style={tw`w-11/12 mx-auto mt-10`}>
         <StepTitle purpleText="tempo" lightText="Find your"></StepTitle>
         <CtmText type="MontserratMedium" style="mt-3">
