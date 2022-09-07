@@ -3,8 +3,10 @@ import ColorButton from "components/UI/Buttons/ColorButton";
 import InputField from "components/UI/InputField";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
 import {
+  NativeSyntheticEvent,
   TextInput,
   TextInputChangeEventData,
+  TextInputKeyPressEventData,
   TextInputSubmitEditingEventData,
 } from "react-native";
 import {
@@ -14,7 +16,6 @@ import {
   Image,
   Dimensions,
   ScrollView,
-  NativeSyntheticEvent,
 } from "react-native";
 import tw from "twrnc";
 import LyricsInputs from "components/UI/Inputs/LyricsInputs";
@@ -28,50 +29,39 @@ type LineType = {
 };
 export default function StepOne() {
   const [refs, setRefs] = useState([] as RefObject<TextInput>[]);
-
-  const inputRef = useRef<TextInput>(null);
+  const [canRender, setCanRender] = useState(false);
   const [line, setLine] = useState({
     key: 0,
     text: "",
   } as LineType);
   const [currentText, setCurrentText] = useState([{ ...line }] as LineType[]);
 
-  // TODO HANDLE THIS
-  // * the idea is whenever we press on a input, it add an index and add an empty text
-  // * if the input is not empty - just edit the input
-  // * when we press enter, go to the next one or add one input in between
-  const nextLine = (
-    e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
-  ) => {};
+  // TODO remove input when pressing remove and when text input value is empty
+  // TODO handle go next line pressing enter
 
-  const onChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {};
-
-  const submit = () => {
-    renderCurrentText();
+  const submit = (): void => {
     const nextKey = getNextKey();
     const isNextLineExisting = existNextLine(nextKey);
     if (!isNextLineExisting) {
       addNextLine(nextKey);
     }
-
     focusNextLine(nextKey);
   };
 
-  const getNextKey = () => line.key + 1;
+  const getNextKey = (): number => line.key + 1;
 
-  const existNextLine = (key: number) => {
-    return currentText.some((item) => item.key === key);
-  };
+  const existNextLine = (key: number): boolean =>
+    currentText.some((item) => item.key === key);
 
-  const focusNextLine = async (key: number) => {
-    const refEl = refs[key];
+  const focusNextLine = async (nextKey: number): Promise<void> => {
+    const refEl = refs[nextKey];
     if (!refEl) return;
-    const inputElement = refs[key].current;
+    const inputElement = refs[nextKey].current;
     if (!inputElement) return;
     inputElement.focus();
   };
 
-  const renderCurrentText = () => {
+  const renderCurrentText = (): void => {
     setCurrentText((prev) => {
       const newTexts = prev.map((item) => {
         if (item.key === line.key) {
@@ -88,6 +78,11 @@ export default function StepOne() {
     });
   };
 
+  useEffect(() => {
+    // only for logs
+    // console.log(line);
+  }, [line.key]);
+
   const addNextLine = (nextKey: number): void => {
     setCurrentText((prev) => [
       ...prev,
@@ -98,21 +93,22 @@ export default function StepOne() {
     ]);
   };
 
-  const addNextText = (key: number) => {
-    setLine((prev) => {
-      return {
-        text: prev.text,
-        key,
-      };
-    });
+  const selectCurrentLine = (key: number, text: string): void => {
+    setLine(() => ({
+      text,
+      key,
+    }));
   };
 
-  const changeText = (line: string, key: number) =>
-    setLine({ text: line, key });
+  const changeText = (text: string, key: number): void => {
+    renderCurrentText();
+    setLine(() => ({
+      key,
+      text,
+    }));
+  };
 
   useEffect(() => {
-    console.log("hier trigger effect");
-
     setRefs((prev) => {
       prev = [];
       for (let i = 0; i < currentText.length; i++) {
@@ -120,8 +116,42 @@ export default function StepOne() {
       }
       return prev;
     });
-    console.log(refs.length);
   }, [currentText.length]);
+
+  const saveTextAs = (action: "draft" | "completed"): void => {
+    // console.log(currentText);
+  };
+
+  const removeLine = () => {
+    if (line.text !== "") return;
+    setCurrentText((prev) => {
+      const newText = prev.filter((item) => item.key !== line.key);
+      console.log(newText);
+
+      const formatted = newText.map((item, index) => {
+        return {
+          ...item,
+          key: index,
+        };
+      });
+      console.log(formatted);
+
+      return [...formatted];
+    });
+    setCanRender(true);
+    const nextKey = getNextKey();
+    focusNextLine(nextKey);
+  };
+
+  const handleKeyPressed = (
+    e: NativeSyntheticEvent<TextInputKeyPressEventData>
+  ) => {
+    const keyPressed = e.nativeEvent.key;
+    switch (keyPressed) {
+      case "Backspace":
+        removeLine();
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -144,15 +174,16 @@ export default function StepOne() {
           </View>
           <View style={tw`mb-5`}>
             <CtmText type="MontserratBold">{refs.length}</CtmText>
-            {currentText.map((_, key) => (
+            {currentText.map((item, key) => (
               <TextInput
                 ref={refs[key]}
                 key={key}
-                onFocus={() => addNextText(key)}
+                onFocus={() => selectCurrentLine(key, item.text)}
                 placeholder="enter text here"
-                onChangeText={() => changeText(line.text, key)}
+                onChangeText={(text) => changeText(text, key)}
                 onSubmitEditing={submit}
                 blurOnSubmit={false}
+                onKeyPress={handleKeyPressed}
               ></TextInput>
             ))}
           </View>
@@ -160,13 +191,17 @@ export default function StepOne() {
             style={tw`flex-row w-10/12 mx-auto items-center justify-center`}
           >
             <ColorButton
-              onPress={() => {}}
+              onPress={() => {
+                saveTextAs("completed");
+              }}
               text="GO"
               ctmStyle="w-8/12 py-3 rounded-xl"
             ></ColorButton>
             <ColorButton
               status="dark"
-              onPress={() => {}}
+              onPress={() => {
+                saveTextAs("draft");
+              }}
               text="Enregistrer"
               ctmStyle="w-8/12 py-3 rounded-xl"
             ></ColorButton>
