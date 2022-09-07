@@ -17,7 +17,7 @@ type LyricsInputType = {
     e: NativeSyntheticEvent<TextInputSubmitEditingEventData>
   ) => void;
   value: string;
-  setLine: (s: string) => void;
+  setLine: ({ text, id }: { text: string; id: number }) => void;
   onChange: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
 };
 export default function LyricsInputs({
@@ -36,7 +36,7 @@ export default function LyricsInputs({
         returnKeyType="next"
         defaultValue={value}
         onChange={onChange}
-        onChangeText={(newText) => setLine(newText)}
+        onChangeText={(t) => setLine({ text: t, id: 0 })}
         style={tw.style(
           font.MontserratBold,
           `text-[20px] px-4 py-2 rounded-md text-white`
