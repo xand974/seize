@@ -7,9 +7,10 @@ import tw from "twrnc";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import SimpleIcon from "components/Icons/SimpleIcon";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function ShareScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const shareButtons = [
     {
       size: 25,

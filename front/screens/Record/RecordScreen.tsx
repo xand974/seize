@@ -15,12 +15,19 @@ import CtmText from "components/core/CtmText";
 import LyricsText from "screens/Lyrics/components/LyricsText";
 import RecordFooter from "./components/RecordFooter";
 import { useState } from "react";
-import { RecordState } from "types";
+import { RecordState, RootStackParamList } from "types";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+
+type CustomNavigationType = StackNavigationProp<
+  RootStackParamList,
+  "EditorScreen"
+>;
 
 export default function RecordScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<CustomNavigationType>();
   const [isRecording, setIsRecording] = useState(false);
+
   const setRecordAction = (action: RecordState) => {
     switch (action) {
       case "PlayBack":

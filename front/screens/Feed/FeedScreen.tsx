@@ -9,9 +9,10 @@ import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
 import SecondLayout from "components/core/SecondLayout";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function FeedScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   //#region UI HEADER
   useLayoutEffect(() => {
     const options = {

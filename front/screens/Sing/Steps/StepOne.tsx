@@ -7,9 +7,10 @@ import SimpleCard from "components/UI/Cards/SimpleCard";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import { lyricsCategories } from "mock/data";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function StepOne() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const nextStep = () => {
     // * check valid category
     // * by id or something like this

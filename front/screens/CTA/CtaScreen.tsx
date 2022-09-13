@@ -7,9 +7,10 @@ import tw from "twrnc";
 import StepTitle from "components/UI/StepTitle/StepTitle";
 import ColorButton from "components/UI/Buttons/ColorButton";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function CtaScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,

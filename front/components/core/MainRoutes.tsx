@@ -14,7 +14,7 @@ import ShareScreen from "screens/Share/ShareScreen";
 
 export default function MainRoutes() {
   const Stack = createStackNavigator();
-  const user = false;
+  const user = true;
 
   return (
     <NavigationContainer>

@@ -11,9 +11,10 @@ import {
   Dimensions,
 } from "react-native";
 import tw from "twrnc";
+import { HomeNavigationProp } from "types";
 
 export default function RenderingScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const [timer, setTimer] = useState(0);
   useEffect(() => {
     const id = setInterval(() => {

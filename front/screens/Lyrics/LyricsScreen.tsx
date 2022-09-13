@@ -9,7 +9,7 @@ import LyricsHeader from "./components/Header";
 import { useNavigation } from "@react-navigation/native";
 
 export default function LyricsScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const goBack = () => {
     const canGoBack = navigation.canGoBack();
     if (!canGoBack) {

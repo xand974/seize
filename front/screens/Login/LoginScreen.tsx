@@ -15,7 +15,7 @@ import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmText from "components/core/CtmText";
 import CtmButton from "components/UI/Buttons/ColorButton";
 import { useNavigation } from "@react-navigation/native";
-import { CredentialModel } from "types";
+import { CredentialModel, HomeNavigationProp } from "types";
 import { useState } from "react";
 
 export default function LoginScreen() {
@@ -24,7 +24,7 @@ export default function LoginScreen() {
     artistName: "",
   } as Partial<CredentialModel>);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
 
   const login = () => {
     console.log(credential);
