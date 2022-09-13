@@ -18,34 +18,55 @@ import {
   ScrollView,
 } from "react-native";
 import tw from "twrnc";
-import LyricsInputs from "components/UI/Inputs/LyricsInputs";
-import { RefObject, useRef, useState, useEffect } from "react";
+import { RefObject, useState, useEffect } from "react";
 import React from "react";
-import { sleep } from "helpers/utils.helpers";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type LineType = {
   key: number;
   text: string;
 };
 export default function StepOne() {
-  const [refs, setRefs] = useState([] as RefObject<TextInput>[]);
-  const [canRender, setCanRender] = useState(false);
+  // TODO move this to a different component
+  // TODO useReducer for clean code
+
+  // * this keeps track of the different error that occurred
+  const [error, setError] = useState(false);
+
+  // * this keep track the TextInputs references
+  const [refs, setRefs] = useState([
+    React.createRef(),
+  ] as RefObject<TextInput>[]);
+
+  // * this handle whenever the focus should change
+  const [canMove, setCanMove] = useState(false);
+
+  // * this track the current line focused
   const [line, setLine] = useState({
     key: 0,
     text: "",
   } as LineType);
+
+  // * this corresponds to the whole text written
   const [currentText, setCurrentText] = useState([{ ...line }] as LineType[]);
 
-  // TODO remove input when pressing remove and when text input value is empty
-  // TODO handle go next line pressing enter
-
+  /**
+   * @name submit
+   * @description
+   * steps:
+   *  - get the next key to check if the next input value is empty
+   *  - then whether add a new line or do nothing
+   *  - then focus on the next line
+   * @returns {void}
+   */
   const submit = (): void => {
     const nextKey = getNextKey();
     const isNextLineExisting = existNextLine(nextKey);
     if (!isNextLineExisting) {
       addNextLine(nextKey);
+      return;
     }
-    focusNextLine(nextKey);
+    focusLineByKey(nextKey);
   };
 
   const getNextKey = (): number => line.key + 1;
@@ -53,7 +74,7 @@ export default function StepOne() {
   const existNextLine = (key: number): boolean =>
     currentText.some((item) => item.key === key);
 
-  const focusNextLine = async (nextKey: number): Promise<void> => {
+  const focusLineByKey = (nextKey: number): void => {
     const refEl = refs[nextKey];
     if (!refEl) return;
     const inputElement = refs[nextKey].current;
@@ -61,13 +82,13 @@ export default function StepOne() {
     inputElement.focus();
   };
 
-  const renderCurrentText = (): void => {
+  const renderCurrentText = (newLine: LineType): void => {
     setCurrentText((prev) => {
       const newTexts = prev.map((item) => {
-        if (item.key === line.key) {
+        if (item.key === newLine.key) {
           return {
             ...item,
-            text: line.text,
+            text: newLine.text,
           };
         }
         return {
@@ -77,11 +98,6 @@ export default function StepOne() {
       return [...newTexts];
     });
   };
-
-  useEffect(() => {
-    // only for logs
-    console.log("current line", line);
-  }, [line.key]);
 
   const addNextLine = (nextKey: number): void => {
     setCurrentText((prev) => [
@@ -101,22 +117,15 @@ export default function StepOne() {
   };
 
   const changeText = (text: string, key: number): void => {
-    renderCurrentText();
+    setError(false);
+    const newLine = { text, key } as LineType;
+
     setLine(() => ({
       key,
-      text,
+      text: text.length === 0 ? "" : text,
     }));
+    renderCurrentText(newLine);
   };
-
-  useEffect(() => {
-    setRefs((prev) => {
-      prev = [];
-      for (let i = 0; i < currentText.length; i++) {
-        prev.push(React.createRef());
-      }
-      return prev;
-    });
-  }, [currentText.length]);
 
   const saveTextAs = (action: "draft" | "completed"): void => {
     console.log(currentText);
@@ -136,9 +145,7 @@ export default function StepOne() {
 
       return [...formatted];
     });
-    setCanRender(true);
-    const nextKey = getNextKey();
-    focusNextLine(nextKey);
+    setCanMove(true);
   };
 
   const handleKeyPressed = (
@@ -148,6 +155,34 @@ export default function StepOne() {
     switch (keyPressed) {
       case "Backspace":
         removeLine();
+    }
+  };
+
+  useEffect(() => {
+    if (!canMove) return;
+    const key = getNextKey();
+    focusLineByKey(key);
+    setCanMove(false);
+  }, [canMove, line.key]);
+
+  useEffect(() => {
+    setRefs((prev) => {
+      prev = [];
+      for (let i = 0; i < currentText.length; i++) {
+        prev.push(React.createRef());
+      }
+      return prev;
+    });
+    setCanMove(true);
+  }, [currentText.length]);
+
+  const saveAsDraft = async () => {
+    try {
+      const jsonText = JSON.stringify(currentText);
+      await AsyncStorage.setItem("@storage_Key", jsonText);
+    } catch (error) {
+      setError(true);
+      throw error;
     }
   };
 
@@ -181,6 +216,7 @@ export default function StepOne() {
                 onChangeText={(text) => changeText(text, key)}
                 onSubmitEditing={submit}
                 blurOnSubmit={false}
+                value={item.text}
                 onKeyPress={handleKeyPressed}
               ></TextInput>
             ))}

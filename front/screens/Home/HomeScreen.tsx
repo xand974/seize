@@ -21,6 +21,7 @@ export default function HomeScreen() {
           backgroundColor: "black",
         },
         tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
       })}
     >
       <Tab.Screen name="FeedScreen" component={FeedScreen} />

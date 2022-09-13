@@ -19,8 +19,6 @@ export default function SecondLayout({
   const scrollRef = useRef<ScrollView | null>(null);
 
   useEffect(() => {
-    console.log(route.name);
-
     const scrollElement = scrollRef.current;
     if (!scrollElement) return;
     scrollElement.scrollTo({
