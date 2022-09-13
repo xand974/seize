@@ -9,12 +9,14 @@ import SimpleCard from "components/UI/Cards/SimpleCard";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import { RouteType } from "types/app.types";
 import { lyricsCategories } from "mock/data";
+import { useNavigation } from "@react-navigation/native";
 
-export default function StepOne({ navigation }: RouteType) {
+export default function StepOne() {
+  const navigation = useNavigation();
   const nextStep = () => {
     // * check valid category
     // * by id or something like this
-    navigation.navigate("StepTwoScreen");
+    navigation.navigate("StepTwoScreen" as never);
   };
   return (
     <SecondLayout style="mt-10">

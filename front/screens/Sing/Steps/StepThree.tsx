@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import CtmText from "components/core/CtmText";
 import SecondLayout from "components/core/SecondLayout";
 import DetailCard from "components/UI/Cards/DetailCard/DetailCard";
@@ -6,7 +7,8 @@ import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
 import { RouteType } from "types/app.types";
 
-export default function StepThree({ navigation }: RouteType) {
+export default function StepThree() {
+  const navigation = useNavigation();
   return (
     <SecondLayout style="mt-10">
       <View style={tw`w-11/12 mx-auto mt-10`}>
@@ -15,19 +17,19 @@ export default function StepThree({ navigation }: RouteType) {
           2. Choose Instrumental
         </CtmText>
         <View style={tw`mt-5`}>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
-          <DetailCard state="Instrumental" navigation={navigation}></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
+          <DetailCard state="Instrumental"></DetailCard>
         </View>
       </View>
     </SecondLayout>

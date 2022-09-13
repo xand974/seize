@@ -1,3 +1,4 @@
+/// <reference path="../../types/index.d.ts"/>
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
 import React from "react";
 import {
@@ -15,7 +16,10 @@ import { useState } from "react";
 import { RecordState, RouteType } from "types";
 import CtmText from "components/core/CtmText";
 import Spectrum from "components/UI/Spectrum/Spectrum";
-export default function EditorScreen({ navigation }: RouteType) {
+import { useNavigation } from "@react-navigation/native";
+
+export default function EditorScreen() {
+  const navigation = useNavigation();
   const [isPlaying, setIsPlaying] = useState(false);
   const setRecordAction = (action: RecordState) => {
     switch (action) {
@@ -24,7 +28,7 @@ export default function EditorScreen({ navigation }: RouteType) {
       case "PlayBack":
         return;
       case "Validate":
-        navigation.navigate("RenderingScreen");
+        navigation.navigate("RenderingScreen" as never);
         return;
       case "SeePreview":
         return;

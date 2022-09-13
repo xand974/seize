@@ -9,8 +9,10 @@ import CtmIcon from "components/Icons/CtmIcon";
 import TextIcon from "components/Icons/TextIcon";
 import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
+import { useNavigation } from "@react-navigation/native";
 
-export default function ProfileScreen({ navigation }: RouteType) {
+export default function ProfileScreen() {
+  const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -20,7 +22,7 @@ export default function ProfileScreen({ navigation }: RouteType) {
     console.log(section);
   };
   return (
-    <SecondLayout style="my-10">
+    <SecondLayout style="mt-10">
       <View style={tw`w-11/12 h-full mx-auto`}>
         {/* Header */}
         <View style={tw`w-full items-center mt-10`}>
@@ -66,12 +68,12 @@ export default function ProfileScreen({ navigation }: RouteType) {
           </View>
         </View>
         {/* Body */}
-        <View style={tw`mt-10 mb-20`}>
+        <View style={tw`mt-10`}>
           <SwitchButton setSection={setSection}></SwitchButton>
           <View>
-            <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
-            <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
-            <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
+            <LyricsCard cardSize="Big"></LyricsCard>
+            <LyricsCard cardSize="Big"></LyricsCard>
+            <LyricsCard cardSize="Big"></LyricsCard>
           </View>
         </View>
       </View>

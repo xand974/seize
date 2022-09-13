@@ -7,8 +7,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
 import StepTitle from "components/UI/StepTitle/StepTitle";
 import ColorButton from "components/UI/Buttons/ColorButton";
+import { useNavigation } from "@react-navigation/native";
 
-export default function CtaScreen({ navigation }: RouteType) {
+export default function CtaScreen() {
+  const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,

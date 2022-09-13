@@ -16,19 +16,21 @@ import { DEFAULT_PERSON } from "helpers/assets.helpers";
 import LyricsText from "./components/LyricsText";
 import ColorButton from "components/UI/Buttons/ColorButton";
 import LyricsHeader from "./components/Header";
+import { useNavigation } from "@react-navigation/native";
 
-export default function LyricsScreen({ navigation }: RouteType) {
+export default function LyricsScreen() {
+  const navigation = useNavigation();
   const goBack = () => {
     const canGoBack = navigation.canGoBack();
     if (!canGoBack) {
-      navigation.navigate("HomeScreen");
+      navigation.navigate("HomeScreen" as never);
       return;
     }
     navigation.goBack();
   };
 
   const nextStep = () => {
-    navigation.navigate("StepThreeScreen");
+    navigation.navigate("StepThreeScreen" as never);
   };
   return (
     <SafeAreaView>

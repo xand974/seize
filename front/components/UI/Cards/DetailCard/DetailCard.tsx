@@ -6,14 +6,14 @@ import { useState } from "react";
 import { SongInfos } from "./SongInfos";
 import { ArtistInfos } from "./ArtistInfos";
 import { BadgeList } from "./BadgeList";
+import { useNavigation } from "@react-navigation/native";
 
 export default function DetailCard({
-  navigation,
   state,
 }: {
-  navigation: RouteType["navigation"];
   state: "Lyrics" | "Instrumental";
 }) {
+  const navigation = useNavigation();
   const [isPlaying, setIsPlaying] = useState(false);
   const pressProfileByActions = () => {
     switch (state) {
@@ -29,12 +29,12 @@ export default function DetailCard({
   const seeByActions = () => {
     switch (state) {
       case "Instrumental":
-        navigation.navigate("RecordScreen");
+        navigation.navigate("RecordScreen" as never);
         return;
       case "Lyrics":
       default:
         // TODO set infos steps to store here
-        navigation.navigate("LyricsScreen");
+        navigation.navigate("LyricsScreen" as never);
         return;
     }
   };

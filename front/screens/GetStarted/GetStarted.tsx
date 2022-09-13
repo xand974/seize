@@ -7,7 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { RouteType } from "types/app.types";
 import CtmText from "../../components/core/CtmText";
 
-export default function GetStarted({ navigation }: RouteType) {
+export default function GetStarted() {
   const start = () => {
     // TODO set current user to true (for first connection only)
   };

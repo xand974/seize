@@ -15,8 +15,11 @@ import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmText from "components/core/CtmText";
 import CtmButton from "components/UI/Buttons/ColorButton";
+import { useNavigation } from "@react-navigation/native";
 
-export default function LoginScreen({ navigation }: RouteType) {
+export default function LoginScreen() {
+  const navigation = useNavigation();
+
   const login = () => {
     redirect(navigation, "GetStartedScreen");
   };

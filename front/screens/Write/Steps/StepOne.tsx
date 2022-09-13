@@ -80,7 +80,7 @@ export default function StepOne() {
 
   useEffect(() => {
     // only for logs
-    // console.log(line);
+    console.log("current line", line);
   }, [line.key]);
 
   const addNextLine = (nextKey: number): void => {
@@ -119,14 +119,13 @@ export default function StepOne() {
   }, [currentText.length]);
 
   const saveTextAs = (action: "draft" | "completed"): void => {
-    // console.log(currentText);
+    console.log(currentText);
   };
 
   const removeLine = () => {
     if (line.text !== "") return;
     setCurrentText((prev) => {
       const newText = prev.filter((item) => item.key !== line.key);
-      console.log(newText);
 
       const formatted = newText.map((item, index) => {
         return {
@@ -134,7 +133,6 @@ export default function StepOne() {
           key: index,
         };
       });
-      console.log(formatted);
 
       return [...formatted];
     });

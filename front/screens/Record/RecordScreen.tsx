@@ -17,15 +17,17 @@ import LyricsText from "screens/Lyrics/components/LyricsText";
 import RecordFooter from "./components/RecordFooter";
 import { useState } from "react";
 import { RecordState } from "types";
+import { useNavigation } from "@react-navigation/native";
 
-export default function RecordScreen({ navigation }: RouteType) {
+export default function RecordScreen() {
+  const navigation = useNavigation();
   const [isRecording, setIsRecording] = useState(false);
   const setRecordAction = (action: RecordState) => {
     switch (action) {
       case "PlayBack":
         return;
       case "Validate":
-        navigation.navigate("EditorScreen");
+        navigation.navigate("EditorScreen" as never);
         return;
       case "Play":
         setIsRecording((prev) => !prev);
@@ -35,7 +37,7 @@ export default function RecordScreen({ navigation }: RouteType) {
   const goBack = () => {
     const canGoBack = navigation.canGoBack();
     if (!canGoBack) {
-      navigation.navigate("HomeScreen");
+      navigation.navigate("HomeScreen" as never);
       return;
     }
     navigation.goBack();

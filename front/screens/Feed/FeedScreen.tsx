@@ -9,8 +9,10 @@ import Choices from "./Choices/Choices";
 import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
 import SecondLayout from "components/core/SecondLayout";
+import { useNavigation } from "@react-navigation/native";
 
-export default function FeedScreen({ navigation }: RouteType) {
+export default function FeedScreen() {
+  const navigation = useNavigation();
   //#region UI HEADER
   useLayoutEffect(() => {
     const options = {
@@ -36,22 +38,19 @@ export default function FeedScreen({ navigation }: RouteType) {
       <View style={tw`mx-auto mt-10`}>
         {/* RECOMMENDED SECTION*/}
         <View style={tw``}>
-          <Recommended
-            navigation={navigation}
-            recommended={profilesRecommended}
-          ></Recommended>
+          <Recommended recommended={profilesRecommended}></Recommended>
           {/* CHOICES SECTION*/}
           <View style={tw`w-full h-80 mt-10`}>
-            <Choices navigation={navigation}></Choices>
+            <Choices></Choices>
           </View>
         </View>
       </View>
-      <View style={tw`w-11/12 mx-auto mt-10 mb-20`}>
+      <View style={tw`w-11/12 mx-auto mt-10`}>
         <SwitchButton setSection={setSectionSelected}></SwitchButton>
         <View style={tw`my-6`}>
-          <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
-          <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
-          <LyricsCard navigation={navigation} cardSize="Big"></LyricsCard>
+          <LyricsCard cardSize="Big"></LyricsCard>
+          <LyricsCard cardSize="Big"></LyricsCard>
+          <LyricsCard cardSize="Big"></LyricsCard>
         </View>
       </View>
     </SecondLayout>

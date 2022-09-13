@@ -5,16 +5,18 @@ import tw from "twrnc";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmIcon from "components/Icons/CtmIcon";
 import { RouteType } from "types";
+import { useNavigation } from "@react-navigation/native";
 
 type LyricsCardType = {
   cardSize: "Small" | "Medium" | "Big";
-  navigation: RouteType["navigation"];
 };
-export default function LyricsCard({ cardSize, navigation }: LyricsCardType) {
+export default function LyricsCard({ cardSize }: LyricsCardType) {
+  const navigation = useNavigation();
+
   const goTo = (to: string) => {
     switch (to) {
       case "Profile":
-        navigation.navigate("ProfileScreen");
+        navigation.navigate("ProfileScreen" as never);
         return;
     }
   };
