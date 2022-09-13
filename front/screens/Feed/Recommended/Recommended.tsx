@@ -4,12 +4,13 @@ import CtmText from "components/core/CtmText";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import RoundedButton from "components/UI/Buttons/RoundedButton";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 type RecommendedType = {
   recommended: { name: string; uri?: string; id?: string }[];
 };
 export default function Recommended({ recommended }: RecommendedType) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const goToProfile = () => {
     navigation.navigate("ProfileScreen");
   };

@@ -20,13 +20,13 @@ import { RefObject, useState, useEffect } from "react";
 import React from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import { LineModel } from "types";
+import { HomeNavigationProp, LineModel } from "types";
 
 export default function StepOne() {
   // TODO move this to a different component
   // TODO useReducer for clean code
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
 
   // TODO handle this
   const [title, setTitle] = useState("");

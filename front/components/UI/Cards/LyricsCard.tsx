@@ -5,12 +5,13 @@ import tw from "twrnc";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmIcon from "components/Icons/CtmIcon";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 type LyricsCardType = {
   cardSize: "Small" | "Medium" | "Big";
 };
 export default function LyricsCard({ cardSize }: LyricsCardType) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
 
   const goTo = (to: string) => {
     switch (to) {

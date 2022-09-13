@@ -4,10 +4,11 @@ import SimpleCard from "components/UI/Cards/SimpleCard";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp, RootStackParamList } from "types";
 
-export default function Choices() {
-  const navigation = useNavigation();
-  const goTo = (to: string) => {
+export default function ChoicesScreen() {
+  const navigation = useNavigation<HomeNavigationProp>();
+  const goTo = (to: keyof RootStackParamList) => {
     navigation.navigate(to);
   };
   return (

@@ -1,19 +1,19 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
-import { RouteType } from "types/app.types";
 import { useState } from "react";
 import { SongInfos } from "./SongInfos";
 import { ArtistInfos } from "./ArtistInfos";
 import { BadgeList } from "./BadgeList";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function DetailCard({
   state,
 }: {
   state: "Lyrics" | "Instrumental";
 }) {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const [isPlaying, setIsPlaying] = useState(false);
   const pressProfileByActions = () => {
     switch (state) {

@@ -10,7 +10,7 @@ import MainLayout from "components/core/MainLayout";
 import tw from "twrnc";
 import InputField from "components/UI/InputField";
 import CtmButton from "components/UI/Buttons/ColorButton";
-import { CredentialModel } from "types";
+import { CredentialModel, HomeNavigationProp } from "types";
 import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmText from "components/core/CtmText";
@@ -18,7 +18,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
 export default function RegisterScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const [credential, setCredential] = useState({
     email: "",
     password: "",

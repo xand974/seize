@@ -5,9 +5,10 @@ import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
 import DetailCard from "components/UI/Cards/DetailCard/DetailCard";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function StepTwo() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   return (
     <SecondLayout style="mt-10">
       <View style={tw`w-11/12 mx-auto mt-10`}>

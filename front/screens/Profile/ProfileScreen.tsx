@@ -9,9 +9,10 @@ import TextIcon from "components/Icons/TextIcon";
 import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function ProfileScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,

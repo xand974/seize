@@ -13,13 +13,13 @@ import {
 import RecordFooter from "screens/Record/components/RecordFooter";
 import tw from "twrnc";
 import { useState } from "react";
-import { RecordState } from "types";
+import { RecordState, HomeNavigationProp } from "types";
 import CtmText from "components/core/CtmText";
 import Spectrum from "components/UI/Spectrum/Spectrum";
 import { useNavigation } from "@react-navigation/native";
 
 export default function EditorScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeNavigationProp>();
   const [isPlaying, setIsPlaying] = useState(false);
   const setRecordAction = (action: RecordState) => {
     switch (action) {
