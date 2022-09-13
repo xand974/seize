@@ -1,6 +1,8 @@
 import {
   Keyboard,
+  NativeSyntheticEvent,
   StyleSheet,
+  TextInputChangeEventData,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -8,20 +10,33 @@ import MainLayout from "components/core/MainLayout";
 import tw from "twrnc";
 import InputField from "components/UI/InputField";
 import CtmButton from "components/UI/Buttons/ColorButton";
-import { RouteType } from "types/index";
+import { CredentialModel } from "types";
 import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmText from "components/core/CtmText";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
+  const [credential, setCredential] = useState({
+    email: "",
+    password: "",
+    artistName: "",
+  } as CredentialModel);
   const register = () => {
-    console.log("here");
+    console.log(credential);
   };
 
   const redirect = () => {
     navigation.navigate("LoginScreen" as never);
+  };
+
+  const changeText = (name: string, text: string) => {
+    setCredential((prev) => ({
+      ...prev,
+      [name]: text,
+    }));
   };
 
   return (
@@ -33,9 +48,26 @@ export default function RegisterScreen() {
           </CtmText>
 
           <View style={tw`mt-10 w-full`}>
-            <InputField title="Email" type="email" placeholder="je@gmail.fr" />
-            <InputField title="Nom d'artiste" type="text" placeholder="sunly" />
             <InputField
+              name="email"
+              setText={changeText}
+              value={credential.email}
+              title="Email"
+              type="email"
+              placeholder="je@gmail.fr"
+            />
+            <InputField
+              name="artistName"
+              setText={changeText}
+              value={credential.artistName}
+              title="Nom d'artiste"
+              type="text"
+              placeholder="sunly"
+            />
+            <InputField
+              name="password"
+              setText={changeText}
+              value={credential.password}
               title="Mot de passe"
               type="password"
               placeholder="****"

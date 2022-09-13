@@ -5,9 +5,7 @@ import { DEFAULT_PERSON } from "helpers/assets.helpers";
 import {
   NativeSyntheticEvent,
   TextInput,
-  TextInputChangeEventData,
   TextInputKeyPressEventData,
-  TextInputSubmitEditingEventData,
 } from "react-native";
 import {
   SafeAreaView,
@@ -21,14 +19,17 @@ import tw from "twrnc";
 import { RefObject, useState, useEffect } from "react";
 import React from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { LineModel } from "types";
 
-type LineType = {
-  key: number;
-  text: string;
-};
 export default function StepOne() {
   // TODO move this to a different component
   // TODO useReducer for clean code
+
+  const navigation = useNavigation();
+
+  // TODO handle this
+  const [title, setTitle] = useState("");
 
   // * this keeps track of the different error that occurred
   const [error, setError] = useState(false);
@@ -45,10 +46,10 @@ export default function StepOne() {
   const [line, setLine] = useState({
     key: 0,
     text: "",
-  } as LineType);
+  } as LineModel);
 
   // * this corresponds to the whole text written
-  const [currentText, setCurrentText] = useState([{ ...line }] as LineType[]);
+  const [currentText, setCurrentText] = useState([{ ...line }] as LineModel[]);
 
   /**
    * @name submit
@@ -82,13 +83,13 @@ export default function StepOne() {
     inputElement.focus();
   };
 
-  const renderCurrentText = (newLine: LineType): void => {
+  const renderCurrentText = (newLine: LineModel): void => {
     setCurrentText((prev) => {
       const newTexts = prev.map((item) => {
         if (item.key === newLine.key) {
           return {
             ...item,
-            text: newLine.text,
+            text: newLine.text.trim(),
           };
         }
         return {
@@ -118,7 +119,7 @@ export default function StepOne() {
 
   const changeText = (text: string, key: number): void => {
     setError(false);
-    const newLine = { text, key } as LineType;
+    const newLine = { text, key } as LineModel;
 
     setLine(() => ({
       key,
@@ -127,12 +128,29 @@ export default function StepOne() {
     renderCurrentText(newLine);
   };
 
-  const saveTextAs = (action: "draft" | "completed"): void => {
-    console.log(currentText);
+  const saveTextAs = async (action: "draft" | "completed"): Promise<void> => {
+    switch (action) {
+      case "draft":
+        console.log(title);
+
+        await saveAsDraft();
+        break;
+      case "completed":
+        await complete();
+    }
+  };
+
+  const complete = async (): Promise<void> => {
+    try {
+      navigation.navigate("StepTwoScreen" as never);
+    } catch (error) {
+      setError(true);
+      throw error;
+    }
   };
 
   const removeLine = () => {
-    if (line.text !== "") return;
+    if (line.text !== "" || currentText.length === 1) return;
     setCurrentText((prev) => {
       const newText = prev.filter((item) => item.key !== line.key);
 
@@ -179,11 +197,15 @@ export default function StepOne() {
   const saveAsDraft = async () => {
     try {
       const jsonText = JSON.stringify(currentText);
-      await AsyncStorage.setItem("@storage_Key", jsonText);
+      await AsyncStorage.setItem(`draft-${title}-v`, jsonText);
     } catch (error) {
       setError(true);
       throw error;
     }
+  };
+
+  const changeTitle = (name: string, text: string) => {
+    setTitle(text);
   };
 
   return (
@@ -203,10 +225,16 @@ export default function StepOne() {
               pop_smoke
             </CtmText>
             <View style={tw`w-3/12 mx-auto my-4 h-[1px] bg-[#6e6e6e]`}></View>
-            <InputField title="" type="text" placeholder="Votre titre..." />
+            <InputField
+              name="title"
+              value={title}
+              setText={changeTitle}
+              title=""
+              type="text"
+              placeholder="Votre titre..."
+            />
           </View>
           <View style={tw`mb-5`}>
-            <CtmText type="MontserratBold">{refs.length}</CtmText>
             {currentText.map((item, key) => (
               <TextInput
                 ref={refs[key]}
@@ -218,6 +246,7 @@ export default function StepOne() {
                 blurOnSubmit={false}
                 value={item.text}
                 onKeyPress={handleKeyPressed}
+                autoCorrect={false}
               ></TextInput>
             ))}
           </View>

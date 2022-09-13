@@ -1,3 +1,5 @@
+import { LineModel } from "types";
+
 export const profilesRecommended: {
   name: string;
   uri?: string;
@@ -41,3 +43,26 @@ export const lyricsCategories = [
     name: "Based on your preferences",
   },
 ];
+
+export const sampleLyrics = [
+  {
+    key: 0,
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, veritatis.",
+  },
+  {
+    key: 1,
+    text: "Je m'appelle Alexandre",
+  },
+  {
+    key: 2,
+    text: "Et j'ai de largent",
+  },
+  {
+    key: 3,
+    text: "et du café yes",
+  },
+  {
+    key: 4,
+    text: "ah non jai rien oublié",
+  },
+] as LineModel[];
