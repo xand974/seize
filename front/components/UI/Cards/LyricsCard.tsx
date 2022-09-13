@@ -4,7 +4,6 @@ import CtmText from "../../core/CtmText";
 import tw from "twrnc";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmIcon from "components/Icons/CtmIcon";
-import { RouteType } from "types";
 import { useNavigation } from "@react-navigation/native";
 
 type LyricsCardType = {
@@ -16,7 +15,7 @@ export default function LyricsCard({ cardSize }: LyricsCardType) {
   const goTo = (to: string) => {
     switch (to) {
       case "Profile":
-        navigation.navigate("ProfileScreen" as never);
+        navigation.navigate("ProfileScreen");
         return;
     }
   };

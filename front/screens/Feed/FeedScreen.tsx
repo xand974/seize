@@ -1,6 +1,5 @@
 import { useLayoutEffect } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
-import { RouteType } from "types/app.types";
 import tw from "twrnc";
 import { Header } from "./Header/Header";
 import Recommended from "./Recommended/Recommended";

@@ -2,18 +2,15 @@ import { useNavigation } from "@react-navigation/native";
 import CtmText from "components/core/CtmText";
 import ColorButton from "components/UI/Buttons/ColorButton";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
-import React from "react";
 import { useEffect, useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
   Image,
   Dimensions,
 } from "react-native";
 import tw from "twrnc";
-import { RouteType } from "types";
 
 export default function RenderingScreen() {
   const navigation = useNavigation();
@@ -24,7 +21,7 @@ export default function RenderingScreen() {
     }, 10);
 
     if (timer === 100) {
-      navigation.navigate("ShareScreen" as never);
+      navigation.navigate("ShareScreen");
       clearInterval(id);
     }
     return () => clearInterval(id);

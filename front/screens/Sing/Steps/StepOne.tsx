@@ -1,13 +1,10 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import MainLayout from "components/core/MainLayout";
+import { StyleSheet, View } from "react-native";
 import SecondLayout from "components/core/SecondLayout";
 import tw from "twrnc";
 import CtmText from "components/core/CtmText";
 import StepTitle from "components/UI/StepTitle/StepTitle";
 import SimpleCard from "components/UI/Cards/SimpleCard";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
-import { RouteType } from "types/app.types";
 import { lyricsCategories } from "mock/data";
 import { useNavigation } from "@react-navigation/native";
 
@@ -16,7 +13,7 @@ export default function StepOne() {
   const nextStep = () => {
     // * check valid category
     // * by id or something like this
-    navigation.navigate("StepTwoScreen" as never);
+    navigation.navigate("StepTwoScreen");
   };
   return (
     <SecondLayout style="mt-10">

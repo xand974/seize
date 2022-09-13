@@ -3,13 +3,12 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import SimpleCard from "components/UI/Cards/SimpleCard";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import tw from "twrnc";
-import { RouteType } from "types/app.types";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Choices() {
   const navigation = useNavigation();
   const goTo = (to: string) => {
-    navigation.navigate(to as never);
+    navigation.navigate(to);
   };
   return (
     <View style={tw`flex-row h-full`}>

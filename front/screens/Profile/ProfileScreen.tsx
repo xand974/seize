@@ -1,6 +1,5 @@
 import { StyleSheet, View, TouchableOpacity, Image } from "react-native";
 import { useLayoutEffect } from "react";
-import { RouteType } from "types";
 import tw from "twrnc";
 import SecondLayout from "components/core/SecondLayout";
 import { COLORFUL_IMG } from "helpers/assets.helpers";

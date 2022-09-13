@@ -1,5 +1,3 @@
-import { RouteType } from "../types/index";
-
 export const redirect = (navigation: any, to: string): void =>
   navigation.navigate(to);
 

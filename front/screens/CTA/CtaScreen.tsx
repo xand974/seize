@@ -1,7 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import SecondLayout from "components/core/SecondLayout";
 import { useLayoutEffect } from "react";
-import { RouteType } from "types";
 import CtmText from "components/core/CtmText";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";

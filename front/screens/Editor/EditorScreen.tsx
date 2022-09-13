@@ -13,7 +13,7 @@ import {
 import RecordFooter from "screens/Record/components/RecordFooter";
 import tw from "twrnc";
 import { useState } from "react";
-import { RecordState, RouteType } from "types";
+import { RecordState } from "types";
 import CtmText from "components/core/CtmText";
 import Spectrum from "components/UI/Spectrum/Spectrum";
 import { useNavigation } from "@react-navigation/native";
@@ -28,7 +28,7 @@ export default function EditorScreen() {
       case "PlayBack":
         return;
       case "Validate":
-        navigation.navigate("RenderingScreen" as never);
+        navigation.navigate("RenderingScreen");
         return;
       case "SeePreview":
         return;

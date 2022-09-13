@@ -5,7 +5,6 @@ import DetailCard from "components/UI/Cards/DetailCard/DetailCard";
 import StepTitle from "components/UI/StepTitle/StepTitle";
 import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
-import { RouteType } from "types/app.types";
 
 export default function StepThree() {
   const navigation = useNavigation();

@@ -1,16 +1,6 @@
-import {
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Image,
-  Dimensions,
-  ScrollView,
-} from "react-native";
-import { RouteType } from "types/app.types";
+import { StyleSheet, View, Image, Dimensions, ScrollView } from "react-native";
 import tw from "twrnc";
-import SimpleIcon from "components/Icons/SimpleIcon";
 import CtmText from "components/core/CtmText";
-import TextIcon from "components/Icons/TextIcon";
 import { SafeAreaView } from "react-native";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
 import LyricsText from "./components/LyricsText";
@@ -23,14 +13,14 @@ export default function LyricsScreen() {
   const goBack = () => {
     const canGoBack = navigation.canGoBack();
     if (!canGoBack) {
-      navigation.navigate("HomeScreen" as never);
+      navigation.navigate("HomeScreen");
       return;
     }
     navigation.goBack();
   };
 
   const nextStep = () => {
-    navigation.navigate("StepThreeScreen" as never);
+    navigation.navigate("StepThreeScreen");
   };
   return (
     <SafeAreaView>

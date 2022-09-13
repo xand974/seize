@@ -29,7 +29,7 @@ export default function RegisterScreen() {
   };
 
   const redirect = () => {
-    navigation.navigate("LoginScreen" as never);
+    navigation.navigate("LoginScreen");
   };
 
   const changeText = (name: string, text: string) => {

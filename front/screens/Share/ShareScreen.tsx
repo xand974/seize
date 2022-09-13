@@ -6,7 +6,6 @@ import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import SimpleIcon from "components/Icons/SimpleIcon";
-import { RouteType } from "types";
 import { useNavigation } from "@react-navigation/native";
 
 export default function ShareScreen() {
@@ -35,7 +34,7 @@ export default function ShareScreen() {
   const setShareActions = (tag: string) => {};
 
   const cancel = () => {
-    navigation.navigate("HomeScreen" as never);
+    navigation.navigate("HomeScreen");
   };
 
   return (

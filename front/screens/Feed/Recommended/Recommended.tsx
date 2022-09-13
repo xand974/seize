@@ -1,9 +1,7 @@
 import { StyleSheet, View, Image, ScrollView } from "react-native";
 import tw from "twrnc";
 import CtmText from "components/core/CtmText";
-
 import { COLORFUL_IMG } from "helpers/assets.helpers";
-import { RouteType } from "types/app.types";
 import RoundedButton from "components/UI/Buttons/RoundedButton";
 import { useNavigation } from "@react-navigation/native";
 
@@ -13,7 +11,7 @@ type RecommendedType = {
 export default function Recommended({ recommended }: RecommendedType) {
   const navigation = useNavigation();
   const goToProfile = () => {
-    navigation.navigate("ProfileScreen" as never);
+    navigation.navigate("ProfileScreen");
   };
   return (
     <View style={tw``}>

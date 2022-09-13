@@ -4,7 +4,6 @@ import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmButton from "components/UI/Buttons/ColorButton";
 import tw from "twrnc";
 import { LinearGradient } from "expo-linear-gradient";
-import { RouteType } from "types/app.types";
 import CtmText from "../../components/core/CtmText";
 
 export default function GetStarted() {

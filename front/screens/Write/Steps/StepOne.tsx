@@ -142,7 +142,7 @@ export default function StepOne() {
 
   const complete = async (): Promise<void> => {
     try {
-      navigation.navigate("StepTwoScreen" as never);
+      navigation.navigate("StepTwoScreen");
     } catch (error) {
       setError(true);
       throw error;

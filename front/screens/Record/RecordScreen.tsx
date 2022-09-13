@@ -11,7 +11,6 @@ import {
 import LyricsHeader from "../Lyrics/components/Header";
 import tw from "twrnc";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
-import { RouteType } from "../../types/app.types";
 import CtmText from "components/core/CtmText";
 import LyricsText from "screens/Lyrics/components/LyricsText";
 import RecordFooter from "./components/RecordFooter";
@@ -27,7 +26,7 @@ export default function RecordScreen() {
       case "PlayBack":
         return;
       case "Validate":
-        navigation.navigate("EditorScreen" as never);
+        navigation.navigate("EditorScreen");
         return;
       case "Play":
         setIsRecording((prev) => !prev);
@@ -37,7 +36,7 @@ export default function RecordScreen() {
   const goBack = () => {
     const canGoBack = navigation.canGoBack();
     if (!canGoBack) {
-      navigation.navigate("HomeScreen" as never);
+      navigation.navigate("HomeScreen");
       return;
     }
     navigation.goBack();

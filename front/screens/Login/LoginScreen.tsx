@@ -9,7 +9,6 @@ import MainLayout from "components/core/MainLayout";
 import tw from "twrnc";
 import defaultStyle from "styles/_globals";
 import InputField from "components/UI/InputField";
-import { RouteType } from "types/app.types";
 import { redirect } from "helpers/utils.helpers";
 import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";

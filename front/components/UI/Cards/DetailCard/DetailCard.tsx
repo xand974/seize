@@ -29,12 +29,12 @@ export default function DetailCard({
   const seeByActions = () => {
     switch (state) {
       case "Instrumental":
-        navigation.navigate("RecordScreen" as never);
+        navigation.navigate("RecordScreen");
         return;
       case "Lyrics":
       default:
         // TODO set infos steps to store here
-        navigation.navigate("LyricsScreen" as never);
+        navigation.navigate("LyricsScreen");
         return;
     }
   };
