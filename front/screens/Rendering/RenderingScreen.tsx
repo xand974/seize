@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import CtmText from "components/core/CtmText";
 import ColorButton from "components/UI/Buttons/ColorButton";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
@@ -14,7 +15,8 @@ import {
 import tw from "twrnc";
 import { RouteType } from "types";
 
-export default function RenderingScreen({ navigation }: RouteType) {
+export default function RenderingScreen() {
+  const navigation = useNavigation();
   const [timer, setTimer] = useState(0);
   useEffect(() => {
     const id = setInterval(() => {
@@ -22,7 +24,7 @@ export default function RenderingScreen({ navigation }: RouteType) {
     }, 10);
 
     if (timer === 100) {
-      navigation.navigate("ShareScreen");
+      navigation.navigate("ShareScreen" as never);
       clearInterval(id);
     }
     return () => clearInterval(id);

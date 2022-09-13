@@ -12,14 +12,16 @@ import { RouteType } from "types/index";
 import RoundedIcon from "components/Icons/RoundedIcon";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmText from "components/core/CtmText";
+import { useNavigation } from "@react-navigation/native";
 
-export default function RegisterScreen({ navigation }: RouteType) {
-  const register = (e: Event) => {
+export default function RegisterScreen() {
+  const navigation = useNavigation();
+  const register = () => {
     console.log("here");
   };
 
   const redirect = () => {
-    navigation.navigate("LoginScreen");
+    navigation.navigate("LoginScreen" as never);
   };
 
   return (
@@ -40,7 +42,7 @@ export default function RegisterScreen({ navigation }: RouteType) {
             />
             <CtmButton
               text="Créer un compte"
-              onPress={register}
+              onPress={() => register()}
               ctmStyle={`w-8/12 mx-auto mt-4 h-10 rounded-xl`}
             />
           </View>

@@ -4,18 +4,19 @@ import StepTitle from "components/UI/StepTitle/StepTitle";
 import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
 import DetailCard from "components/UI/Cards/DetailCard/DetailCard";
-import { RouteType } from "types/app.types";
+import { useNavigation } from "@react-navigation/native";
 
-export default function StepTwo({ navigation }: RouteType) {
+export default function StepTwo() {
+  const navigation = useNavigation();
   return (
-    <SecondLayout>
+    <SecondLayout style="mt-10">
       <View style={tw`w-11/12 mx-auto mt-10`}>
         <StepTitle purpleText="inspiration" lightText="Find your"></StepTitle>
         <CtmText type="MontserratMedium" style="mt-3">
           2. Choose Lyrics
         </CtmText>
         <View style={tw`mt-5`}>
-          <DetailCard state="Lyrics" navigation={navigation}></DetailCard>
+          <DetailCard state="Lyrics"></DetailCard>
         </View>
       </View>
     </SecondLayout>

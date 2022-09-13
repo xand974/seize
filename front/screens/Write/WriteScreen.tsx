@@ -4,9 +4,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import StepOne from "screens/Write/Steps/StepOne";
 import StepTwo from "screens/Write/Steps/StepTwo";
 import { useLayoutEffect } from "react";
-import { RouteType } from "../../types/app.types";
+import { RouteType } from "types";
+import {
+  getFocusedRouteNameFromRoute,
+  useNavigation,
+} from "@react-navigation/native";
 
-export default function WriteScreen({ navigation }: RouteType) {
+export default function WriteScreen() {
+  const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
