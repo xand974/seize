@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import StepOne from "screens/Write/Steps/StepOne";
-import StepTwo from "screens/Write/Steps/StepTwo";
+import WriteStepOne from "screens/Write/Steps/WriteStepOne";
+import WriteStepTwo from "screens/Write/Steps/WriteStepTwo";
 import { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "types";
@@ -16,13 +16,13 @@ export default function WriteScreen() {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="StepOne"
+      initialRouteName="StepOneScreen"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen component={StepOne} name="StepOneScreen" />
-      <Stack.Screen component={StepTwo} name="StepTwoScreen" />
+      <Stack.Screen component={WriteStepOne} name="StepOneScreen" />
+      <Stack.Screen component={WriteStepTwo} name="StepTwoScreen" />
     </Stack.Navigator>
   );
 }

@@ -7,24 +7,39 @@ import {
   TextInput,
   TextInputKeyPressEventData,
 } from "react-native";
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Image,
-  Dimensions,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
 import { RefObject, useState, useEffect } from "react";
 import React from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp, LineModel } from "types";
+import font from "styles/_font";
+import { sampleLyrics } from "mock/data";
+import ImageLayout from "components/core/ImageLayout";
 
-export default function StepOne() {
+interface WriteStepOneButtonType {
+  status: "default" | "dark";
+  tag: "draft" | "completed";
+  text: string;
+}
+
+export default function WriteStepOne() {
   // TODO move this to a different component
   // TODO useReducer for clean code
+
+  //#region Props
+  const buttons = [
+    {
+      status: "dark",
+      tag: "draft",
+      text: "Enregistrer",
+    },
+    {
+      tag: "completed",
+      text: "GO",
+    },
+  ] as WriteStepOneButtonType[];
 
   const navigation = useNavigation<HomeNavigationProp>();
 
@@ -50,7 +65,9 @@ export default function StepOne() {
 
   // * this corresponds to the whole text written
   const [currentText, setCurrentText] = useState([{ ...line }] as LineModel[]);
+  //#endregion
 
+  //#region Handlers
   /**
    * @name submit
    * @description
@@ -89,7 +106,7 @@ export default function StepOne() {
         if (item.key === newLine.key) {
           return {
             ...item,
-            text: newLine.text.trim(),
+            text: newLine.text,
           };
         }
         return {
@@ -128,11 +145,20 @@ export default function StepOne() {
     renderCurrentText(newLine);
   };
 
+  const formatText = () => {
+    setCurrentText((prev) => {
+      return prev.map((item) => ({
+        ...item,
+        text: item.text.trim(),
+      }));
+    });
+  };
+
   const saveTextAs = async (action: "draft" | "completed"): Promise<void> => {
     switch (action) {
       case "draft":
         console.log(title);
-
+        formatText();
         await saveAsDraft();
         break;
       case "completed":
@@ -176,6 +202,26 @@ export default function StepOne() {
     }
   };
 
+  const saveAsDraft = async () => {
+    try {
+      const jsonText = JSON.stringify(currentText);
+      // await AsyncStorage.setItem(`draft-${title}-v`, jsonText);
+    } catch (error) {
+      setError(true);
+      throw error;
+    }
+  };
+
+  const changeTitle = (name: string, text: string) => {
+    setTitle(text);
+  };
+  //#endregion
+
+  //#region  useEffects
+  useEffect(() => {
+    setCurrentText([...sampleLyrics]);
+  }, []);
+
   useEffect(() => {
     if (!canMove) return;
     const key = getNextKey();
@@ -193,85 +239,63 @@ export default function StepOne() {
     });
     setCanMove(true);
   }, [currentText.length]);
-
-  const saveAsDraft = async () => {
-    try {
-      const jsonText = JSON.stringify(currentText);
-      await AsyncStorage.setItem(`draft-${title}-v`, jsonText);
-    } catch (error) {
-      setError(true);
-      throw error;
-    }
-  };
-
-  const changeTitle = (name: string, text: string) => {
-    setTitle(text);
-  };
+  //#endregion
 
   return (
-    <SafeAreaView>
-      <Image
-        source={{ uri: DEFAULT_PERSON }}
-        resizeMode="cover"
-        blurRadius={20}
-        style={tw`absolute w-full h-[${
-          Dimensions.get("window").height
-        }px] top-0 left-0 opacity-90`}
-      />
-      <ScrollView horizontal={false} style={tw`h-full mt-10`}>
-        <View style={tw`w-11/12 mx-auto`}>
-          <View style={tw`w-8/12 mx-auto mb-5`}>
-            <CtmText type="MontserratSemiBold" style="text-2xl text-center">
-              pop_smoke
-            </CtmText>
-            <View style={tw`w-3/12 mx-auto my-4 h-[1px] bg-[#6e6e6e]`}></View>
-            <InputField
-              name="title"
-              value={title}
-              setText={changeTitle}
-              title=""
-              type="text"
-              placeholder="Votre titre..."
-            />
-          </View>
-          <View style={tw`mb-5`}>
-            {currentText.map((item, key) => (
-              <TextInput
-                ref={refs[key]}
-                key={key}
-                onFocus={() => selectCurrentLine(key, item.text)}
-                placeholder="enter text here"
-                onChangeText={(text) => changeText(text, key)}
-                onSubmitEditing={submit}
-                blurOnSubmit={false}
-                value={item.text}
-                onKeyPress={handleKeyPressed}
-                autoCorrect={false}
-              ></TextInput>
-            ))}
-          </View>
-          <View
-            style={tw`flex-row w-10/12 mx-auto items-center justify-center`}
-          >
-            <ColorButton
-              onPress={() => {
-                saveTextAs("completed");
-              }}
-              text="GO"
-              ctmStyle="w-8/12 py-3 rounded-xl"
-            ></ColorButton>
-            <ColorButton
-              status="dark"
-              onPress={() => {
-                saveTextAs("draft");
-              }}
-              text="Enregistrer"
-              ctmStyle="w-8/12 py-3 rounded-xl"
-            ></ColorButton>
-          </View>
+    <ImageLayout imgUrl={DEFAULT_PERSON}>
+      <View style={tw`w-11/12 mx-auto`}>
+        {/* Header */}
+        <View style={tw`w-8/12 mx-auto mb-5`}>
+          <CtmText type="MontserratSemiBold" style="text-2xl text-center">
+            pop_smoke
+          </CtmText>
+          <View style={tw`w-3/12 mx-auto my-4 h-[1px] bg-[#6e6e6e]`}></View>
+          <InputField
+            name="title"
+            value={title}
+            setText={changeTitle}
+            title=""
+            type="text"
+            placeholder="Votre titre..."
+          />
         </View>
-      </ScrollView>
-    </SafeAreaView>
+        {/* Body */}
+        <View style={tw`mb-5`}>
+          {currentText.map((item, key) => (
+            <TextInput
+              style={tw.style(
+                font.MontserratBold,
+                `text-[20px] px-4 py-2 rounded-md text-white`
+              )}
+              ref={refs[key]}
+              key={key}
+              onFocus={() => selectCurrentLine(key, item.text)}
+              placeholder="enter text here"
+              onChangeText={(text) => changeText(text, key)}
+              onSubmitEditing={submit}
+              blurOnSubmit={false}
+              value={item.text}
+              onKeyPress={handleKeyPressed}
+              autoCorrect={false}
+            ></TextInput>
+          ))}
+        </View>
+        {/* Footer - Buttons */}
+        <View style={tw`flex-row w-10/12 mx-auto items-center justify-center`}>
+          {buttons.map((item, key) => (
+            <ColorButton
+              key={key}
+              status={item.status}
+              onPress={() => {
+                saveTextAs(item.tag);
+              }}
+              text={item.text}
+              ctmStyle="w-8/12 py-3 rounded-xl"
+            ></ColorButton>
+          ))}
+        </View>
+      </View>
+    </ImageLayout>
   );
 }
 

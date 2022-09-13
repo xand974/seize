@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import StepOne from "./Steps/StepOne";
-import StepTwo from "./Steps/StepTwo";
-import StepThree from "./Steps/StepThree";
+import SingStepOne from "./Steps/SingStepOne";
+import SingStepTwo from "./Steps/SingStepTwo";
+import SingStepThree from "./Steps/SingStepThree";
 
 export default function SingScreen() {
   const Stack = createStackNavigator();
@@ -14,9 +14,9 @@ export default function SingScreen() {
         headerShown: false,
       }}
     >
-      <Stack.Screen component={StepOne} name="StepOneScreen" />
-      <Stack.Screen component={StepTwo} name="StepTwoScreen" />
-      <Stack.Screen component={StepThree} name="StepThreeScreen" />
+      <Stack.Screen component={SingStepOne} name="StepOneScreen" />
+      <Stack.Screen component={SingStepTwo} name="StepTwoScreen" />
+      <Stack.Screen component={SingStepThree} name="StepThreeScreen" />
     </Stack.Navigator>
   );
 }
