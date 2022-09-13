@@ -18,7 +18,7 @@ export default function HomeScreen() {
           return <HomeIcons route={route} {...props} />;
         },
         tabBarStyle: {
-          backgroundColor: "black",
+          backgroundColor: "#0a0a0a",
         },
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,

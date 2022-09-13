@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import tw from "twrnc";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 
 type MainLayoutType = {
   children: React.ReactNode;
@@ -11,11 +10,10 @@ type MainLayoutType = {
   style?: string;
 };
 export default function MainLayout({ children, uri, style }: MainLayoutType) {
-  const tabBarHeight = useBottomTabBarHeight();
   return (
     <View style={tw`flex-1`}>
       <ScrollView
-        contentContainerStyle={{ flexGrow: 1, paddingBottom: tabBarHeight }}
+        contentContainerStyle={{ flexGrow: 1 }}
         style={tw`bg-[#212121] h-full flex-1 `}
       >
         {uri ? (

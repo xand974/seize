@@ -16,13 +16,30 @@ import { COLORFUL_IMG } from "helpers/assets.helpers";
 import CtmText from "components/core/CtmText";
 import CtmButton from "components/UI/Buttons/ColorButton";
 import { useNavigation } from "@react-navigation/native";
+import { CredentialModel } from "types";
+import { useState } from "react";
 
 export default function LoginScreen() {
+  const [credential, setCredential] = useState({
+    password: "",
+    artistName: "",
+  } as Partial<CredentialModel>);
+
   const navigation = useNavigation();
 
   const login = () => {
+    console.log(credential);
+
     redirect(navigation, "GetStartedScreen");
   };
+
+  const changeText = (name: string, text: string) => {
+    setCredential((prev) => ({
+      ...prev,
+      [name]: text,
+    }));
+  };
+
   return (
     <MainLayout uri={COLORFUL_IMG}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={tw`h-[70%]`}>
@@ -32,8 +49,18 @@ export default function LoginScreen() {
           </CtmText>
 
           <View style={tw`mt-10 w-full`}>
-            <InputField title="Nom d'artiste" type="text" placeholder="sunly" />
             <InputField
+              value={credential.artistName}
+              setText={changeText}
+              name="artistName"
+              title="Nom d'artiste"
+              type="text"
+              placeholder="sunly"
+            />
+            <InputField
+              setText={changeText}
+              value={credential.password}
+              name="password"
               title="Mot de passe"
               type="password"
               placeholder="****"
