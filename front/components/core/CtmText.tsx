@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  NativeSyntheticEvent,
+  NativeTouchEvent,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import tw from "twrnc";
 import font from "styles/_font";
 
@@ -19,7 +25,7 @@ type CtmTextType = {
     | "MontserratSemiBold"
     | "MontserratBold"
     | "MontserratBlack";
-  onPress?: () => void;
+  onPress?: (e?: NativeSyntheticEvent<NativeTouchEvent>) => void;
 };
 export default function CtmText({
   style,

@@ -18,19 +18,24 @@ type InputFieldType = {
   setText: (text: string, name?: string) => void;
   name: string;
   value: any;
+  textStyle?: string;
   onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
 };
 export default function InputField({
   title,
   type,
   placeholder,
+  textStyle,
   setText,
   value,
   name,
 }: InputFieldType) {
   return (
     <View style={tw`mb-6`}>
-      <CtmText style={`mb-2 font-extralight text-sm`} type="MontserratLight">
+      <CtmText
+        style={`mb-2 font-extralight text-sm ${textStyle ?? ""}`}
+        type="MontserratLight"
+      >
         {title}
       </CtmText>
       <TextInput

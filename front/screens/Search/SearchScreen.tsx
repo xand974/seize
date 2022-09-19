@@ -1,4 +1,4 @@
-import { Keyboard, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Keyboard, ScrollView, StyleSheet, View } from "react-native";
 import SecondLayout from "components/core/SecondLayout";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -25,6 +25,7 @@ export default function SearchScreen() {
     <SecondLayout>
       <View style={tw`w-11/12 mx-auto mt-5`}>
         <InputField
+          textStyle="text-xl text-center"
           name="search"
           title="What are you looking for ?"
           type="text"

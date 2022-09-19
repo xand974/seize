@@ -17,7 +17,7 @@ import { COLORFUL_IMG } from "helpers/assets.helpers";
 import { useNavigation } from "@react-navigation/native";
 
 export default function MyProfileScreen() {
-  const setSection = () => {};
+  const setSection = (section: string) => {};
 
   return (
     <SecondLayout>

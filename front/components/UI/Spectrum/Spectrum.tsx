@@ -10,7 +10,7 @@ export default function Spectrum() {
       <View
         style={tw`w-10/12 mx-auto bg-red-200 items-center h-8/12 justify-center`}
       >
-        <Text>denjnez</Text>
+        <Text>Spectrum</Text>
       </View>
     </View>
   );

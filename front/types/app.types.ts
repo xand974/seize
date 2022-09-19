@@ -5,29 +5,24 @@ export type RootStackParamList = {
   HomeScreen: undefined;
 
   SingScreen: {
-    screen?: string;
+    screen?: "SingStepOneScreen" | "SingStepTwoScreen" | "SingStepThreeScreen";
   };
   WriteScreen: {
-    screen?: string;
+    screen?: "WriteStepOneScreen" | "WriteStepTwoScreen";
   };
-
-  //* SING SECTION
-  SingStepOneScreen: undefined;
-  SingStepTwoScreen: undefined;
-  SingStepThreeScreen: undefined;
-
-  //* Write Section
-  WriteStepOneScreen: undefined;
-  WriteStepTwoScreen: undefined;
 
   //* Login Section
   RegisterScreen: undefined;
   LoginScreen: undefined;
-  LyricsScreen: undefined;
 
+  LyricsScreen: {
+    data?: any;
+  };
   RenderingScreen: undefined;
   ShareScreen: undefined;
-  ProfileScreen: undefined;
+  ProfileScreen: {
+    data?: any;
+  };
   CtaScreen: undefined;
   RecordScreen: undefined;
   FeedScreen: undefined;

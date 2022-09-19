@@ -5,7 +5,7 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useEffect } from "react";
 import tw from "twrnc";
 import SecondLayout from "components/core/SecondLayout";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
@@ -14,10 +14,11 @@ import CtmIcon from "components/Icons/CtmIcon";
 import TextIcon from "components/Icons/TextIcon";
 import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { HomeNavigationProp } from "types";
 
 export default function ProfileScreen() {
+  const route = useRoute();
   const navigation = useNavigation<HomeNavigationProp>();
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -27,6 +28,10 @@ export default function ProfileScreen() {
   const setSection = (section: string) => {
     console.log(section);
   };
+
+  useEffect(() => {
+    console.log(route.params);
+  }, []);
   return (
     <SecondLayout>
       <ScrollView style={tw`mt-10`}>
@@ -80,9 +85,9 @@ export default function ProfileScreen() {
           <View style={tw`mt-10`}>
             <SwitchButton setSection={setSection}></SwitchButton>
             <View>
-              <LyricsCard cardSize="Big"></LyricsCard>
-              <LyricsCard cardSize="Big"></LyricsCard>
-              <LyricsCard cardSize="Big"></LyricsCard>
+              <LyricsCard cardSize="Medium"></LyricsCard>
+              <LyricsCard cardSize="Medium"></LyricsCard>
+              <LyricsCard cardSize="Medium"></LyricsCard>
             </View>
           </View>
         </View>

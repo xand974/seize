@@ -102,3 +102,8 @@ export const sampleLyrics = [
     text: "ah non jai rien oublié",
   },
 ] as LineModel[];
+
+export enum APP_SECTIONS {
+  TopInterpretations = "topInterpretations",
+  TopLyrics = "topLyrics",
+}

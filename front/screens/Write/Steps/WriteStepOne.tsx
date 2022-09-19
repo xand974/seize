@@ -170,7 +170,9 @@ export default function WriteStepOne() {
 
   const complete = async (): Promise<void> => {
     try {
-      navigation.navigate("WriteStepTwoScreen");
+      navigation.navigate("WriteScreen", {
+        screen: "WriteStepTwoScreen",
+      });
     } catch (error) {
       setError(true);
       throw error;
