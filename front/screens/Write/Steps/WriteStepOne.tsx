@@ -4,6 +4,7 @@ import InputField from "components/UI/InputField";
 import { DEFAULT_PERSON } from "helpers/assets.helpers";
 import {
   NativeSyntheticEvent,
+  ScrollView,
   TextInput,
   TextInputKeyPressEventData,
 } from "react-native";
@@ -17,6 +18,7 @@ import { HomeNavigationProp, LineModel } from "types";
 import font from "styles/_font";
 import { sampleLyrics } from "mock/data";
 import ImageLayout from "components/core/ImageLayout";
+import CtmIcon from "components/Icons/CtmIcon";
 
 interface WriteStepOneButtonType {
   status: "default" | "dark";
@@ -46,7 +48,7 @@ export default function WriteStepOne() {
   // TODO handle this
   const [title, setTitle] = useState("");
 
-  // * this keeps track of the different error that occurred
+  // * this keeps track of the different errors that occur
   const [error, setError] = useState(false);
 
   // * this keep track the TextInputs references
@@ -218,8 +220,24 @@ export default function WriteStepOne() {
   //#endregion
 
   //#region  useEffects
+
+  /**
+   * * init the current text
+   * * get the last one from the storage
+   * * if null, start a new one
+   */
   useEffect(() => {
-    setCurrentText([...sampleLyrics]);
+    const getLastDraftTextFromStorage = async () => {
+      const draftTitle = `draft-${title}-v`;
+      const draftText = await AsyncStorage.getItem(draftTitle);
+      if (!draftText) {
+        setCurrentText([...sampleLyrics]);
+        return;
+      }
+      const parsedDraftText = JSON.parse(draftText) as LineModel[];
+      setCurrentText([...parsedDraftText]);
+    };
+    getLastDraftTextFromStorage().catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -243,9 +261,23 @@ export default function WriteStepOne() {
 
   return (
     <ImageLayout imgUrl={DEFAULT_PERSON}>
-      <View style={tw`w-11/12 mx-auto`}>
+      <ScrollView
+        style={tw`w-11/12 mx-auto`}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <View style={tw`w-8/12 mx-auto mb-5`}>
+          <CtmIcon
+            name="musical-notes-outline"
+            type="ionicon"
+            parentStyle="absolute -right-15"
+          />
+          <CtmIcon
+            name="image-outline"
+            type="ionicon"
+            parentStyle="absolute -left-10"
+          />
+
           <CtmText type="MontserratSemiBold" style="text-2xl text-center">
             pop_smoke
           </CtmText>
@@ -265,6 +297,7 @@ export default function WriteStepOne() {
             <TextInput
               style={tw.style(
                 font.MontserratBold,
+                styles.inputText,
                 `text-[20px] px-4 py-2 rounded-md text-white`
               )}
               ref={refs[key]}
@@ -275,6 +308,7 @@ export default function WriteStepOne() {
               onSubmitEditing={submit}
               blurOnSubmit={false}
               value={item.text}
+              placeholderTextColor="#a5b5bd"
               onKeyPress={handleKeyPressed}
               autoCorrect={false}
             ></TextInput>
@@ -294,9 +328,11 @@ export default function WriteStepOne() {
             ></ColorButton>
           ))}
         </View>
-      </View>
+      </ScrollView>
     </ImageLayout>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  inputText: {},
+});

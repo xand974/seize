@@ -65,4 +65,20 @@ export const sampleLyrics = [
     key: 4,
     text: "ah non jai rien oublié",
   },
+  {
+    key: 5,
+    text: "ah non jai rien oublié",
+  },
+  {
+    key: 6,
+    text: "ah non jai rien oublié",
+  },
+  {
+    key: 7,
+    text: "ah non jai rien oublié",
+  },
+  {
+    key: 8,
+    text: "ah non jai rien oublié",
+  },
 ] as LineModel[];

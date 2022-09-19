@@ -61,8 +61,11 @@ export default function LyricsOptions() {
   };
   return (
     <View>
+      <CtmText type="MontserratBold" style="text-2xl mb-5 text-center">
+        About your lyrics
+      </CtmText>
       {options.map((item, id) => (
-        <View style={tw`flex-row mb-5`} key={id}>
+        <View style={tw`flex-row mb-5 items-center`} key={id}>
           <TextInput
             placeholder={item.placeholder}
             style={tw`text-xl bg-white text-black font-bold items-center w-15 mr-4 pb-1 rounded-md px-3`}

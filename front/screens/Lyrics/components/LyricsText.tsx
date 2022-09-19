@@ -28,13 +28,17 @@ export default function LyricsText({ shrink = false }: LyricsTextProp) {
                   </CtmText>
                 </View>
               ) : (
-                <CtmText
-                  type="MontserratBold"
-                  style="text-xl mb-5"
-                  onPress={toggleExpand}
-                >
-                  ...
-                </CtmText>
+                <>
+                  {id === sampleLyrics.length - 1 && (
+                    <CtmText
+                      type="MontserratBold"
+                      style="text-xl mb-5"
+                      onPress={toggleExpand}
+                    >
+                      ...
+                    </CtmText>
+                  )}
+                </>
               )}
             </>
           ) : (

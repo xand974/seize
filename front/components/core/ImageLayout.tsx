@@ -14,11 +14,7 @@ interface ImageLayoutProp {
   canScroll?: boolean;
   children: React.ReactNode;
 }
-export default function ImageLayout({
-  imgUrl,
-  children,
-  canScroll = true,
-}: ImageLayoutProp) {
+export default function ImageLayout({ imgUrl, children }: ImageLayoutProp) {
   return (
     <SafeAreaView style={tw`h-full mb-20`}>
       <Image
@@ -29,13 +25,7 @@ export default function ImageLayout({
           Dimensions.get("window").height
         }px] top-0 left-0 opacity-90`}
       />
-      {canScroll ? (
-        <ScrollView horizontal={false} style={tw`h-full mt-10`}>
-          {children}
-        </ScrollView>
-      ) : (
-        <View style={tw`h-full mt-10`}> {children} </View>
-      )}
+      <View style={tw`h-full mt-10`}>{children}</View>
     </SafeAreaView>
   );
 }
