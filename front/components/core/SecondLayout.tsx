@@ -4,11 +4,11 @@ import tw from "twrnc";
 import { useEffect, useRef } from "react";
 import { useRoute } from "@react-navigation/native";
 
-type SecondLayoutType = {
+interface SecondLayoutProp {
   children: React.ReactNode;
   ref?: RefObject<ScrollView> | null;
-};
-export default function SecondLayout({ children }: SecondLayoutType) {
+}
+export default function SecondLayout({ children }: SecondLayoutProp) {
   const route = useRoute();
   const scrollRef = useRef<ScrollView | null>(null);
 

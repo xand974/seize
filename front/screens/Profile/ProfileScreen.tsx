@@ -5,7 +5,7 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import { useLayoutEffect, useEffect } from "react";
+import { useLayoutEffect, useEffect, useState } from "react";
 import tw from "twrnc";
 import SecondLayout from "components/core/SecondLayout";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
@@ -16,10 +16,15 @@ import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { HomeNavigationProp } from "types";
+import { PROFILE_SECTIONS, PROFILE_SECTIONS_DISPLAYED } from "data/app.data";
+import SingCard from "components/UI/Cards/SingCard";
 
 export default function ProfileScreen() {
   const route = useRoute();
   const navigation = useNavigation<HomeNavigationProp>();
+  const [selectedSection, setSelectedSection] = useState(
+    PROFILE_SECTIONS_DISPLAYED.Lyrics
+  );
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -27,6 +32,10 @@ export default function ProfileScreen() {
   }, []);
   const setSection = (section: string) => {
     console.log(section);
+  };
+
+  const setSelected = (section: string) => {
+    setSelectedSection(section as any);
   };
 
   useEffect(() => {
@@ -83,12 +92,28 @@ export default function ProfileScreen() {
           </View>
           {/* Body */}
           <View style={tw`mt-10`}>
-            <SwitchButton setSection={setSection}></SwitchButton>
-            <View>
-              <LyricsCard cardSize="Medium"></LyricsCard>
-              <LyricsCard cardSize="Medium"></LyricsCard>
-              <LyricsCard cardSize="Medium"></LyricsCard>
-            </View>
+            <SwitchButton
+              sections={PROFILE_SECTIONS}
+              setSection={setSection}
+            ></SwitchButton>
+            {selectedSection === "lyrics" ? (
+              <View style={tw`my-6`}>
+                <LyricsCard cardSize="Big" />
+                <LyricsCard cardSize="Big" />
+                <LyricsCard cardSize="Big" />
+              </View>
+            ) : (
+              <View style={tw`my-6`}>
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+              </View>
+            )}
           </View>
         </View>
       </ScrollView>

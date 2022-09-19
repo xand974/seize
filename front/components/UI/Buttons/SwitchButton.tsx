@@ -1,24 +1,18 @@
 import { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
+import { SectionsType } from "types";
 import CtmText from "../../core/CtmText";
 
-type SwitchButtonType = {
+interface SwitchButtonProp {
+  sections: SectionsType[];
   setSection: (section: string) => void;
-};
-export default function SwitchButton({ setSection }: SwitchButtonType) {
-  const [buttonItems, setButtonItems] = useState([
-    {
-      title: "Top Lyrics",
-      contentDisplayed: "topLyrics",
-      isActive: true,
-    },
-    {
-      title: "Top Interpretations",
-      contentDisplayed: "topInterpretations",
-      isActive: false,
-    },
-  ]);
+}
+export default function SwitchButton({
+  setSection,
+  sections,
+}: SwitchButtonProp) {
+  const [buttonItems, setButtonItems] = useState(sections);
 
   const setSectionSelected = (section: string) => {
     setButtonItems((prev) => {

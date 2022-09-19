@@ -3,18 +3,18 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import tw from "twrnc";
 import { LinearGradient } from "expo-linear-gradient";
 
-type ButtonType = {
+interface ButtonProp {
   text: string;
   onPress?: () => void;
   ctmStyle?: string;
   status?: "default" | "dark";
-};
+}
 export default function ColorButton({
   text,
   onPress,
   ctmStyle,
   status = "default",
-}: ButtonType) {
+}: ButtonProp) {
   const getStatus = () => {
     switch (status) {
       default:

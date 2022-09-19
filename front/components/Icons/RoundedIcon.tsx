@@ -3,10 +3,16 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import tw from "twrnc";
 
-type RoundedIconType = {
+interface RoundedIconProp {
   iconName: string;
-};
-export default function RoundedIcon({ iconName }: RoundedIconType) {
+}
+/**
+ *
+ * @param iconName: RoundedIconProp
+ * @returns JSX.Element
+ * @deprecated
+ */
+export default function RoundedIcon({ iconName }: RoundedIconProp) {
   return (
     <TouchableOpacity
       style={tw`w-[60px] h-[60px] mx-auto bg-red-100 mb-2 rounded-full justify-center items-center`}

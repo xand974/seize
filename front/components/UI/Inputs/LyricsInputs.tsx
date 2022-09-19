@@ -7,10 +7,10 @@ import {
   View,
 } from "react-native";
 import tw from "twrnc";
-import font from "styles/_font";
+import font from "../../../styles/_font";
 import { TextInputChangeEventData } from "react-native";
 
-type LyricsInputType = {
+interface LyricsInputProp {
   placeholder: string;
   style?: string;
   submitEdit: (
@@ -19,7 +19,7 @@ type LyricsInputType = {
   value: string;
   setLine: ({ text, id }: { text: string; id: number }) => void;
   onChange: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
-};
+}
 export default function LyricsInputs({
   placeholder,
   style,
@@ -27,7 +27,7 @@ export default function LyricsInputs({
   submitEdit,
   value,
   onChange,
-}: LyricsInputType) {
+}: LyricsInputProp) {
   return (
     <View style={tw`${style ?? ""}`}>
       <TextInput

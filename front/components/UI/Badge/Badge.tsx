@@ -3,13 +3,13 @@ import { StyleSheet, Text, View } from "react-native";
 import CtmText from "../../core/CtmText";
 import tw from "twrnc";
 
-type BadgeType = {
+interface BadgeProp {
   content: string;
   style?: string;
   textStyle?: string;
   state: "Default" | "Active";
-};
-export default function Badge({ content, style, state, textStyle }: BadgeType) {
+}
+export default function Badge({ content, style, state, textStyle }: BadgeProp) {
   return (
     <View
       style={tw`px-2 py-1 ${

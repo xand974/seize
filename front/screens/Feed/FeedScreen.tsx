@@ -3,14 +3,15 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import tw from "twrnc";
 import { Header } from "./Header/Header";
 import Recommended from "./Recommended/Recommended";
-import { profilesRecommended, APP_SECTIONS } from "mock/data";
+import { profilesRecommended } from "mock/data";
+import { APP_SECTIONS, FEED_SECTIONS } from "data/app.data";
 import Choices from "./Choices/Choices";
 import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
 import SecondLayout from "components/core/SecondLayout";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "types";
-import SingCard from "../../components/UI/Cards/SingCard";
+import SingCard from "components/UI/Cards/SingCard";
 
 export default function FeedScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -68,9 +69,10 @@ export default function FeedScreen() {
         </View>
         <View style={tw`w-11/12 mx-auto mt-10`}>
           <SwitchButton
+            sections={FEED_SECTIONS}
             setSection={(section: any) => setSelected(section)}
           ></SwitchButton>
-          {selectedSection === "topInterpretations" ? (
+          {selectedSection === "topLyrics" ? (
             <View style={tw`my-6`}>
               <LyricsCard cardSize="Big" />
               <LyricsCard cardSize="Big" />

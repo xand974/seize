@@ -4,11 +4,11 @@ import tw from "twrnc";
 import SimpleIcon from "components/Icons/SimpleIcon";
 import TextIcon from "components/Icons/TextIcon";
 
-type LyricsHeaderType = {
+interface LyricsHeaderProp {
   onPress: () => void;
-};
+}
 
-export default function Header({ onPress }: LyricsHeaderType) {
+export default function Header({ onPress }: LyricsHeaderProp) {
   return (
     <View style={tw`flex-row justify-between w-full items-center h-10`}>
       <TouchableOpacity onPress={onPress}>

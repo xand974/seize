@@ -7,16 +7,18 @@ import CtmIcon from "components/Icons/CtmIcon";
 import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "types";
 
-type LyricsCardType = {
+interface LyricsCardProp {
   cardSize: "Small" | "Medium" | "Big";
-};
-export default function LyricsCard({ cardSize }: LyricsCardType) {
+}
+export default function LyricsCard({ cardSize }: LyricsCardProp) {
   const navigation = useNavigation<HomeNavigationProp>();
 
   const goTo = (to: string) => {
     switch (to) {
       case "Profile":
-        navigation.navigate("ProfileScreen");
+        navigation.navigate("ProfileScreen", {
+          data: "profile",
+        });
         return;
     }
   };

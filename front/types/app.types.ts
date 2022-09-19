@@ -27,9 +27,18 @@ export type RootStackParamList = {
   RecordScreen: undefined;
   FeedScreen: undefined;
   LoadingScreen: undefined;
+  PlayScreen: {
+    song?: any;
+  };
 };
 
 export type HomeNavigationProp = StackNavigationProp<
   RootStackParamList,
   keyof RootStackParamList
 >;
+
+export interface SectionsType {
+  title: string;
+  contentDisplayed: string;
+  isActive: boolean;
+}

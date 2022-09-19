@@ -11,7 +11,7 @@ import tw from "twrnc";
 import defaultStyle from "../../styles/_globals";
 import CtmText from "../core/CtmText";
 
-type InputFieldType = {
+interface InputFieldProp {
   title: string;
   type: string;
   placeholder: string;
@@ -20,7 +20,7 @@ type InputFieldType = {
   value: any;
   textStyle?: string;
   onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
-};
+}
 export default function InputField({
   title,
   type,
@@ -29,7 +29,7 @@ export default function InputField({
   setText,
   value,
   name,
-}: InputFieldType) {
+}: InputFieldProp) {
   return (
     <View style={tw`mb-6`}>
       <CtmText

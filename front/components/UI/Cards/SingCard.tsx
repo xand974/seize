@@ -16,7 +16,7 @@ export default function SingCard() {
 
   const goTo = (
     e: NativeSyntheticEvent<NativeTouchEvent>,
-    state: "profile" | "lyrics",
+    state: "profile" | "song",
     data: string
   ) => {
     e.stopPropagation();
@@ -26,17 +26,19 @@ export default function SingCard() {
           data,
         });
         break;
-      case "lyrics":
-        navigation.navigate("LyricsScreen", {
-          data,
+      case "song":
+        navigation.navigate("PlayScreen", {
+          song: "",
         });
+        break;
+      default:
         break;
     }
   };
   return (
     <TouchableOpacity
       style={tw`flex-row items-center h-20 relative mb-5`}
-      onPress={(e) => goTo(e, "lyrics", "data")}
+      onPress={(e) => goTo(e, "song", "song")}
     >
       {/* LEFT SIDE */}
       <View style={tw`flex-1 items-center`}>

@@ -6,13 +6,13 @@ import RoundedButton from "components/UI/Buttons/RoundedButton";
 import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "types";
 
-type RecommendedType = {
+interface RecommendedProp {
   recommended: { name: string; uri?: string; id?: string }[];
-};
-export default function Recommended({ recommended }: RecommendedType) {
+}
+export default function Recommended({ recommended }: RecommendedProp) {
   const navigation = useNavigation<HomeNavigationProp>();
   const goToProfile = () => {
-    navigation.navigate("ProfileScreen");
+    navigation.navigate("ProfileScreen", {});
   };
   return (
     <View style={tw``}>

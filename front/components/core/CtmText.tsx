@@ -9,7 +9,7 @@ import {
 import tw from "twrnc";
 import font from "styles/_font";
 
-type CtmTextType = {
+interface CtmTextProp {
   style?: string;
   children: React.ReactNode | string;
   type:
@@ -26,13 +26,13 @@ type CtmTextType = {
     | "MontserratBold"
     | "MontserratBlack";
   onPress?: (e?: NativeSyntheticEvent<NativeTouchEvent>) => void;
-};
+}
 export default function CtmText({
   style,
   children,
   type,
   onPress,
-}: CtmTextType) {
+}: CtmTextProp) {
   return (
     <Text
       style={tw.style(styles[type], `text-white ${style ? style : ""}`)}

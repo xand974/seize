@@ -1,4 +1,3 @@
-import React, { useLayoutEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -14,10 +13,17 @@ import CtmIcon from "components/Icons/CtmIcon";
 import tw from "twrnc";
 import CtmText from "components/core/CtmText";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
-import { useNavigation } from "@react-navigation/native";
+import SingCard from "components/UI/Cards/SingCard";
+import { useState } from "react";
+import { PROFILE_SECTIONS, PROFILE_SECTIONS_DISPLAYED } from "data/app.data";
 
 export default function MyProfileScreen() {
-  const setSection = (section: string) => {};
+  const [selectedSection, setSelectedSection] = useState(
+    PROFILE_SECTIONS_DISPLAYED.Lyrics
+  );
+  const setSelected = (section: string) => {
+    setSelectedSection(section as any);
+  };
 
   return (
     <SecondLayout>
@@ -70,12 +76,28 @@ export default function MyProfileScreen() {
           </View>
           {/* Body */}
           <View style={tw`my-10`}>
-            <SwitchButton setSection={setSection}></SwitchButton>
-            <View>
-              <LyricsCard cardSize="Big"></LyricsCard>
-              <LyricsCard cardSize="Big"></LyricsCard>
-              <LyricsCard cardSize="Big"></LyricsCard>
-            </View>
+            <SwitchButton
+              sections={PROFILE_SECTIONS}
+              setSection={setSelected}
+            ></SwitchButton>
+            {selectedSection === "lyrics" ? (
+              <View style={tw`my-6`}>
+                <LyricsCard cardSize="Big" />
+                <LyricsCard cardSize="Big" />
+                <LyricsCard cardSize="Big" />
+              </View>
+            ) : (
+              <View style={tw`my-6`}>
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+                <SingCard />
+              </View>
+            )}
           </View>
         </View>
       </ScrollView>

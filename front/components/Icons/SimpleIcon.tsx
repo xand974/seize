@@ -4,20 +4,20 @@ import { Icon } from "react-native-elements/dist/icons/Icon";
 import tw from "twrnc";
 import { CtmIconHost } from "components/Icons/CtmIcon";
 
-type SimpleIconType = {
+interface SimpleIconProp {
   type: CtmIconHost;
   name: string;
   size?: number;
   color?: string;
   style?: string;
-};
+}
 export default function SimpleIcon({
   type,
   name,
   size,
   color,
   style,
-}: SimpleIconType) {
+}: SimpleIconProp) {
   return (
     <Icon
       type={type}

@@ -2,7 +2,7 @@ import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import CtmText from "../../core/CtmText";
 import tw from "twrnc";
 
-type CardType = {
+interface CardProp {
   onPress?: () => void;
   image?: {
     uri: string;
@@ -13,8 +13,8 @@ type CardType = {
     content: string;
   };
   size: "Large" | "Small";
-};
-export default function SimpleCard({ onPress, image, text, size }: CardType) {
+}
+export default function SimpleCard({ onPress, image, text, size }: CardProp) {
   return (
     <TouchableOpacity
       onPress={onPress}

@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from "@react-navigation/stack";
 import HomeScreen from "screens/Home/HomeScreen";
 import SingScreen from "screens/Sing/SingScreen";
 import LyricsScreen from "screens/Lyrics/LyricsScreen";
@@ -13,6 +16,7 @@ import LoginScreen from "screens/Login/LoginScreen";
 import GetStarted from "screens/GetStarted/GetStarted";
 import ProfileScreen from "screens/Profile/ProfileScreen";
 import LoadingScreen from "screens/Loading/LoadingScreen";
+import PlayScreen from "screens/Play/PlayScreen";
 
 export default function RootNavigator() {
   const Stack = createStackNavigator();
@@ -35,6 +39,13 @@ export default function RootNavigator() {
           <Stack.Screen name="RenderingScreen" component={RenderingScreen} />
           <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen
+            name="PlayScreen"
+            options={{
+              ...TransitionPresets.ModalSlideFromBottomIOS,
+            }}
+            component={PlayScreen}
+          />
         </Stack.Group>
       ) : (
         <Stack.Group

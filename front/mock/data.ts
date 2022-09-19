@@ -1,4 +1,5 @@
 import { LineModel } from "types";
+import { SectionsType } from "../types/app.types";
 
 export const profilesRecommended: {
   name: string;
@@ -102,8 +103,3 @@ export const sampleLyrics = [
     text: "ah non jai rien oublié",
   },
 ] as LineModel[];
-
-export enum APP_SECTIONS {
-  TopInterpretations = "topInterpretations",
-  TopLyrics = "topLyrics",
-}
