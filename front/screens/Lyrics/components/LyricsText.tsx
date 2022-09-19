@@ -1,17 +1,49 @@
 import { sampleLyrics } from "mock/data";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
-import CtmText from "../../../components/core/CtmText";
+import CtmText from "components/core/CtmText";
+import { useMemo, useState } from "react";
 
-export default function LyricsText() {
+interface LyricsTextProp {
+  shrink?: boolean;
+}
+export default function LyricsText({ shrink = false }: LyricsTextProp) {
+  const THRESHOLD = useMemo(() => 3, []);
+  const [expand, setExpand] = useState(shrink);
+
+  const toggleExpand = () => {
+    setExpand((prev) => !prev);
+  };
+
   return (
     <View style={tw``}>
       {sampleLyrics.map((item, id) => (
-        <View key={item.key} style={tw`mb-5`}>
-          <CtmText type="MontserratBold" style="text-xl">
-            {item.text}
-          </CtmText>
+        <View key={id}>
+          {shrink && expand ? (
+            <>
+              {id <= THRESHOLD ? (
+                <View style={tw`mb-5`}>
+                  <CtmText type="MontserratBold" style="text-xl">
+                    {item.text}
+                  </CtmText>
+                </View>
+              ) : (
+                <CtmText
+                  type="MontserratBold"
+                  style="text-xl mb-5"
+                  onPress={toggleExpand}
+                >
+                  ...
+                </CtmText>
+              )}
+            </>
+          ) : (
+            <View style={tw`mb-5`}>
+              <CtmText type="MontserratBold" style="text-xl">
+                {item.text}
+              </CtmText>
+            </View>
+          )}
         </View>
       ))}
     </View>

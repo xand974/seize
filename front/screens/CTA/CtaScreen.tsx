@@ -41,7 +41,7 @@ export default function CtaScreen() {
     }
   };
   return (
-    <SecondLayout canScroll={false}>
+    <SecondLayout>
       <SafeAreaView>
         <View style={tw`mt-10 w-11/12 mx-auto`}>
           <StepTitle lightText="Choose a" purpleText="action"></StepTitle>

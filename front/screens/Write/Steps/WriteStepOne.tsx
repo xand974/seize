@@ -20,7 +20,7 @@ import ImageLayout from "components/core/ImageLayout";
 
 interface WriteStepOneButtonType {
   status: "default" | "dark";
-  tag: "draft" | "completed";
+  tag: "draft" | "complete";
   text: string;
 }
 
@@ -36,7 +36,7 @@ export default function WriteStepOne() {
       text: "Enregistrer",
     },
     {
-      tag: "completed",
+      tag: "complete",
       text: "GO",
     },
   ] as WriteStepOneButtonType[];
@@ -154,14 +154,14 @@ export default function WriteStepOne() {
     });
   };
 
-  const saveTextAs = async (action: "draft" | "completed"): Promise<void> => {
+  const saveTextAs = async (action: "draft" | "complete"): Promise<void> => {
     switch (action) {
       case "draft":
         console.log(title);
         formatText();
         await saveAsDraft();
         break;
-      case "completed":
+      case "complete":
         await complete();
     }
   };

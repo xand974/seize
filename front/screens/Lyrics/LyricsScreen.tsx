@@ -7,6 +7,7 @@ import LyricsText from "./components/LyricsText";
 import ColorButton from "components/UI/Buttons/ColorButton";
 import LyricsHeader from "./components/Header";
 import { useNavigation } from "@react-navigation/native";
+import { HomeNavigationProp } from "types";
 
 export default function LyricsScreen() {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -44,7 +45,7 @@ export default function LyricsScreen() {
               Le jour où j'ai...
             </CtmText>
           </View>
-          <LyricsText></LyricsText>
+          <LyricsText />
           <ColorButton
             onPress={() => nextStep()}
             text="Choose"

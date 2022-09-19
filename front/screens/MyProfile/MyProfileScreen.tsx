@@ -1,32 +1,22 @@
+import React from "react";
 import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Image,
   ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
 } from "react-native";
-import { useLayoutEffect } from "react";
-import tw from "twrnc";
 import SecondLayout from "components/core/SecondLayout";
-import { COLORFUL_IMG } from "helpers/assets.helpers";
-import CtmText from "components/core/CtmText";
-import CtmIcon from "components/Icons/CtmIcon";
-import TextIcon from "components/Icons/TextIcon";
-import SwitchButton from "components/UI/Buttons/SwitchButton";
 import LyricsCard from "components/UI/Cards/LyricsCard";
-import { useNavigation } from "@react-navigation/native";
-import { HomeNavigationProp } from "types";
+import SwitchButton from "components/UI/Buttons/SwitchButton";
+import TextIcon from "components/Icons/TextIcon";
+import CtmIcon from "components/Icons/CtmIcon";
+import tw from "twrnc";
+import CtmText from "components/core/CtmText";
+import { COLORFUL_IMG } from "helpers/assets.helpers";
 
-export default function ProfileScreen() {
-  const navigation = useNavigation<HomeNavigationProp>();
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
-  const setSection = (section: string) => {
-    console.log(section);
-  };
+export default function MyProfileScreen() {
+  const setSection = () => {};
   return (
     <SecondLayout>
       <ScrollView style={tw`mt-10`}>

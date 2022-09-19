@@ -7,6 +7,7 @@ import tw from "twrnc";
 import CtmText from "components/core/CtmText";
 import { useState } from "react";
 import { LyricsModel } from "types";
+import LyricsOptions from "../../Lyrics/components/LyricsOptions";
 
 export default function WriteStepTwo() {
   const [lyricsInfos, setLyricsInfos] = useState({} as Partial<LyricsModel>);
@@ -25,7 +26,8 @@ export default function WriteStepTwo() {
         </View>
         {/* Body */}
         <View style={tw`mb-5`}>
-          <LyricsText />
+          <LyricsText shrink />
+          <LyricsOptions />
         </View>
         {/* Footer */}
         <View></View>

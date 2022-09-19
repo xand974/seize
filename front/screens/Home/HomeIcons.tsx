@@ -13,29 +13,17 @@ export const HomeIcons = ({
   color: string;
   size: number;
 }) => {
-  let iconName = "";
-  switch (route.name) {
-    case "FeedScreen":
-      iconName = focused ? "home" : "home-outline";
-      color = focused ? "white" : "#b8b8b8";
-      size = 20;
-      break;
-    case "WriteScreen":
-      iconName = focused ? "pencil" : "pencil-outline";
-      color = focused ? "white" : "#b8b8b8";
-      size = 20;
-      break;
-    case "ProfileScreen":
-      iconName = focused ? "person-sharp" : "person-outline";
-      color = focused ? "white" : "#b8b8b8";
-      size = 20;
-      break;
-    case "SearchScreen":
-      iconName = focused ? "search" : "search-outline";
-      color = focused ? "white" : "#b8b8b8";
-      size = 20;
-      break;
-  }
+  const iconOptionsMap = new Map<string, string>([
+    ["FeedScreen", focused ? "home" : "home-outline"],
+    ["WriteScreen", focused ? "pencil" : "pencil-outline"],
+    ["MyProfileScreen", focused ? "person-sharp" : "person-outline"],
+    ["SearchScreen", focused ? "search" : "search-outline"],
+  ]);
+  const routeName = route.name as string;
+  const iconName = iconOptionsMap.get(routeName) as string;
+  color = focused ? "white" : "#b8b8b8";
+  size = 20;
+
   return (
     <SimpleIcon type="ionicon" name={iconName} size={size} color={color} />
   );

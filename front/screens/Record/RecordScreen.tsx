@@ -70,7 +70,7 @@ export default function RecordScreen() {
               Le jour où j'ai...
             </CtmText>
           </View>
-          <LyricsText></LyricsText>
+          <LyricsText />
         </View>
       </ScrollView>
       <RecordFooter

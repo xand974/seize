@@ -16,6 +16,8 @@ export type RootStackParamList = {
   SingScreen: undefined;
   WriteScreen: undefined;
   RecordScreen: undefined;
+  FeedScreen: undefined;
+  LoadingScreen: undefined;
 };
 
 export type HomeNavigationProp = StackNavigationProp<
