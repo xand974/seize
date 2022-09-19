@@ -14,7 +14,7 @@ export default function StepOne() {
   const nextStep = () => {
     // * check valid category
     // * by id or something like this
-    navigation.navigate("StepTwoScreen");
+    navigation.navigate("SingStepTwoScreen");
   };
   return (
     <SecondLayout>

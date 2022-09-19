@@ -9,14 +9,14 @@ export default function SingScreen() {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="StepOne"
+      initialRouteName="SingStepOneScreen"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen component={SingStepOne} name="StepOneScreen" />
-      <Stack.Screen component={SingStepTwo} name="StepTwoScreen" />
-      <Stack.Screen component={SingStepThree} name="StepThreeScreen" />
+      <Stack.Screen component={SingStepOne} name="SingStepOneScreen" />
+      <Stack.Screen component={SingStepTwo} name="SingStepTwoScreen" />
+      <Stack.Screen component={SingStepThree} name="SingStepThreeScreen" />
     </Stack.Navigator>
   );
 }

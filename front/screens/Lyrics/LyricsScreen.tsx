@@ -21,7 +21,9 @@ export default function LyricsScreen() {
   };
 
   const nextStep = () => {
-    navigation.navigate("StepThreeScreen");
+    navigation.navigate("SingScreen", {
+      screen: "SingStepThreeScreen",
+    });
   };
   return (
     <SafeAreaView>

@@ -16,13 +16,13 @@ export default function WriteScreen() {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="StepOneScreen"
+      initialRouteName="WriteStepOneScreen"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen component={WriteStepOne} name="StepOneScreen" />
-      <Stack.Screen component={WriteStepTwo} name="StepTwoScreen" />
+      <Stack.Screen component={WriteStepOne} name="WriteStepOneScreen" />
+      <Stack.Screen component={WriteStepTwo} name="WriteStepTwoScreen" />
     </Stack.Navigator>
   );
 }
