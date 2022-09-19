@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { StyleSheet, View } from "react-native";
 import tw from "twrnc";
-import { RefObject, useState, useEffect } from "react";
+import { RefObject, useState, useEffect, useRef } from "react";
 import React from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
@@ -214,7 +214,7 @@ export default function WriteStepOne() {
     }
   };
 
-  const changeTitle = (name: string, text: string) => {
+  const changeTitle = (text: string) => {
     setTitle(text);
   };
   //#endregion
@@ -259,10 +259,11 @@ export default function WriteStepOne() {
   }, [currentText.length]);
   //#endregion
 
+  //#region Template
   return (
     <ImageLayout imgUrl={DEFAULT_PERSON}>
       <ScrollView
-        style={tw`w-11/12 mx-auto`}
+        style={tw`w-11/12 mx-auto mb-15`}
         showsVerticalScrollIndicator={false}
       >
         {/* Header */}
@@ -331,6 +332,7 @@ export default function WriteStepOne() {
       </ScrollView>
     </ImageLayout>
   );
+  //#endregion
 }
 
 const styles = StyleSheet.create({

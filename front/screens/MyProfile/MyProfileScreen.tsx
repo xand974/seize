@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -14,9 +14,11 @@ import CtmIcon from "components/Icons/CtmIcon";
 import tw from "twrnc";
 import CtmText from "components/core/CtmText";
 import { COLORFUL_IMG } from "helpers/assets.helpers";
+import { useNavigation } from "@react-navigation/native";
 
 export default function MyProfileScreen() {
   const setSection = () => {};
+
   return (
     <SecondLayout>
       <ScrollView style={tw`mt-10`}>
@@ -67,7 +69,7 @@ export default function MyProfileScreen() {
             </View>
           </View>
           {/* Body */}
-          <View style={tw`mt-10`}>
+          <View style={tw`my-10`}>
             <SwitchButton setSection={setSection}></SwitchButton>
             <View>
               <LyricsCard cardSize="Big"></LyricsCard>

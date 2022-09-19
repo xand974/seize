@@ -32,7 +32,8 @@ export default function RegisterScreen() {
     navigation.navigate("LoginScreen");
   };
 
-  const changeText = (name: string, text: string) => {
+  const changeText = (text: string, name?: string) => {
+    if (!name) return;
     setCredential((prev) => ({
       ...prev,
       [name]: text,

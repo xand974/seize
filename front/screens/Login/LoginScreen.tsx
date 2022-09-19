@@ -32,7 +32,8 @@ export default function LoginScreen() {
     redirect(navigation, "GetStartedScreen");
   };
 
-  const changeText = (name: string, text: string) => {
+  const changeText = (text: string, name?: string) => {
+    if (!name) return;
     setCredential((prev) => ({
       ...prev,
       [name]: text,

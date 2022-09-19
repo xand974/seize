@@ -9,7 +9,7 @@ export default function MainRoutes() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
-        <RootNavigator></RootNavigator>
+        <RootNavigator />
       </KeyboardAvoidingView>
     </NavigationContainer>
   );

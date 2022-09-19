@@ -15,7 +15,7 @@ type InputFieldType = {
   title: string;
   type: string;
   placeholder: string;
-  setText: (name: string, text: string) => void;
+  setText: (text: string, name?: string) => void;
   name: string;
   value: any;
   onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
@@ -34,7 +34,7 @@ export default function InputField({
         {title}
       </CtmText>
       <TextInput
-        onChangeText={(text) => setText(name, text)}
+        onChangeText={(text) => setText(text, name)}
         value={value}
         style={tw`bg-[rgba(255,255,255,0.18)] text-[16px] px-4 py-2 rounded-md text-white`}
         secureTextEntry={type === "password" ? true : false}
