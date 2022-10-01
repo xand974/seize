@@ -13,13 +13,17 @@ interface LyricsCardProp {
 export default function LyricsCard({ cardSize }: LyricsCardProp) {
   const navigation = useNavigation<HomeNavigationProp>();
 
-  const goTo = (to: string) => {
+  const goTo = (to: "Profile" | "Lyrics") => {
     switch (to) {
       case "Profile":
         navigation.navigate("ProfileScreen", {
           data: "profile",
         });
         return;
+      case "Lyrics":
+        navigation.navigate("LyricsScreen", {
+          data: "profile",
+        });
     }
   };
   const setCardImgSize = () => {
@@ -61,10 +65,13 @@ export default function LyricsCard({ cardSize }: LyricsCardProp) {
         <CtmText style="mx-2" type="MontserratRegular">
           •
         </CtmText>
-        <CtmText type="MontserratRegular">J'ai vu des choses...</CtmText>
+        <CtmText onPress={() => goTo("Lyrics")} type="MontserratRegular">
+          J'ai vu des choses...
+        </CtmText>
       </View>
       {/* BODY */}
       <TouchableOpacity
+        onPress={() => goTo("Lyrics")}
         activeOpacity={0.8}
         style={tw`w-full h-${setCardImgSize()} mb-2 relative items-center justify-center`}
       >

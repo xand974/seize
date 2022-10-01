@@ -1,8 +1,11 @@
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+const Theme = {
   text_color: {
-    color: "#fff",
+    white: "#fff",
+    primaryBlue: "#7D7AFF",
   },
   primary_gray: {},
-});
+};
+
+export default Theme;

@@ -7,7 +7,6 @@ import {
 } from "react-native";
 import MainLayout from "components/core/MainLayout";
 import tw from "twrnc";
-import defaultStyle from "styles/_globals";
 import InputField from "components/UI/InputField";
 import { redirect } from "helpers/utils.helpers";
 import RoundedIcon from "components/Icons/RoundedIcon";

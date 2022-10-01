@@ -12,7 +12,9 @@ interface RecommendedProp {
 export default function Recommended({ recommended }: RecommendedProp) {
   const navigation = useNavigation<HomeNavigationProp>();
   const goToProfile = () => {
-    navigation.navigate("ProfileScreen", {});
+    navigation.navigate("ProfileScreen", {
+      data: "dada",
+    });
   };
   return (
     <View style={tw``}>

@@ -31,10 +31,6 @@ export default function ProfileScreen() {
     });
   }, []);
   const setSection = (section: string) => {
-    console.log(section);
-  };
-
-  const setSelected = (section: string) => {
     setSelectedSection(section as any);
   };
 

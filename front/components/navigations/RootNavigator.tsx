@@ -1,5 +1,4 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import {
   createStackNavigator,
   TransitionPresets,
@@ -21,6 +20,9 @@ import PlayScreen from "screens/Play/PlayScreen";
 export default function RootNavigator() {
   const Stack = createStackNavigator();
   const user = true;
+  const modalOptions = {
+    ...TransitionPresets.ModalSlideFromBottomIOS,
+  };
   return (
     <Stack.Navigator
       screenOptions={{
@@ -35,15 +37,17 @@ export default function RootNavigator() {
           <Stack.Screen name="LyricsScreen" component={LyricsScreen} />
           <Stack.Screen name="RecordScreen" component={RecordScreen} />
           <Stack.Screen name="EditorScreen" component={EditorScreen} />
-          <Stack.Screen name="ShareScreen" component={ShareScreen} />
+          <Stack.Screen
+            name="ShareScreen"
+            options={modalOptions}
+            component={ShareScreen}
+          />
           <Stack.Screen name="RenderingScreen" component={RenderingScreen} />
           <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
           <Stack.Screen
             name="PlayScreen"
-            options={{
-              ...TransitionPresets.ModalSlideFromBottomIOS,
-            }}
+            options={modalOptions}
             component={PlayScreen}
           />
         </Stack.Group>

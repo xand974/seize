@@ -39,7 +39,6 @@ export default function FeedScreen() {
   useFocusEffect(
     useCallback(() => {
       console.log("focus");
-
       return () => {};
     }, [])
     // useCallback(() => {

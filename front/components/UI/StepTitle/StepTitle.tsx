@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import CtmText from "components/core/CtmText";
-
+import AppStyle from "styles/_globals";
 export default function StepTitle({
   lightText,
   purpleText,
@@ -14,7 +14,10 @@ export default function StepTitle({
       <CtmText type="MontserratThin" style="text-center text-2xl">
         {lightText}
       </CtmText>
-      <CtmText type="AlexBrush" style="text-center text-[#7D7AFF] text-[40px]">
+      <CtmText
+        type="AlexBrush"
+        style={`text-center text-[${AppStyle.text_color.primaryBlue}] text-[40px]`}
+      >
         {purpleText}
       </CtmText>
     </>

@@ -21,7 +21,8 @@ export default function DetailCard({
         setIsPlaying((prev) => !prev);
         return;
       case "Lyrics":
-      // TODO go to profile
+        navigation.navigate("ProfileScreen", {});
+        break;
       default:
         return;
     }
@@ -34,7 +35,7 @@ export default function DetailCard({
       case "Lyrics":
       default:
         // TODO set infos steps to store here
-        navigation.navigate("LyricsScreen");
+        navigation.navigate("LyricsScreen", { data: "" });
         return;
     }
   };

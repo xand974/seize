@@ -8,54 +8,56 @@ export default function RecordFooter({
   isRecording,
   setRecordAction,
   type,
+  disabled = false,
 }: RecordFooterType) {
   const recordActions = {
     record: [
       {
         icon: "play-skip-back",
-        tag: "PlayBack",
+        tag: "playBack",
       },
       {
         icon: isRecording ? "ios-stop-outline" : "play-outline",
-        tag: "Play",
+        tag: "play",
       },
       {
         icon: "checkmark",
-        tag: "Validate",
+        tag: "validate",
         style: isRecording ? "bg-gray-200" : "bg-green-600",
       },
     ],
     edit: [
       {
         icon: "play-skip-back",
-        tag: "PlayBack",
+        tag: "playBack",
       },
       {
         icon: isRecording ? "ios-stop-outline" : "play-outline",
-        tag: "Play",
+        tag: "play",
       },
       {
         icon: "image-outline",
-        tag: "UploadImage",
+        tag: "uploadImage",
       },
       {
         icon: "eye-outline",
-        tag: "SeePreview",
+        tag: "seePreview",
       },
       {
         icon: "checkmark",
-        tag: "Validate",
+        tag: "validate",
         style: isRecording ? "bg-gray-200" : "bg-green-600",
       },
     ],
   } as ActionType;
   return (
-    <View style={tw`absolute bottom-15 left-0 w-full h-20`}>
+    <View style={tw`w-full h-20`}>
       <View
         style={tw`w-10/12 h-full flex-row items-center mx-auto justify-center`}
       >
         {recordActions[type].map((item, id) => (
           <CtmIcon
+            disabled={item.tag === "validate" && isRecording}
             key={id}
             onPress={() => setRecordAction(item.tag)}
             type="ionicon"

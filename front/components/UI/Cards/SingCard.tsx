@@ -1,6 +1,5 @@
 import CtmText from "components/core/CtmText";
 import {
-  StyleSheet,
   View,
   TouchableOpacity,
   NativeSyntheticEvent,
@@ -10,6 +9,7 @@ import tw from "twrnc";
 import CtmIcon from "components/Icons/CtmIcon";
 import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "types";
+import AppStyle from "styles/_globals";
 
 export default function SingCard() {
   const navigation = useNavigation<HomeNavigationProp>();
@@ -75,7 +75,7 @@ export default function SingCard() {
           </CtmText>
           <CtmText
             type="MontserratMedium"
-            style="text-xs text-[#7D7AFF]"
+            style={`text-xs text-[${AppStyle.text_color.primaryBlue}]`}
             onPress={(e: any) => goTo(e, "profile", "xand974")}
           >
             @xand974
@@ -88,7 +88,7 @@ export default function SingCard() {
           </CtmText>
           <CtmText
             type="MontserratMedium"
-            style="text-xs text-[#7D7AFF]"
+            style={`text-xs text-[${AppStyle.text_color.primaryBlue}]`}
             onPress={(e: any) => goTo(e, "profile", "simon")}
           >
             @simon
@@ -106,5 +106,3 @@ export default function SingCard() {
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({});

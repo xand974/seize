@@ -1,8 +1,5 @@
-import React from "react";
 import {
   SafeAreaView,
-  StyleSheet,
-  Text,
   View,
   Image,
   Dimensions,
@@ -30,12 +27,12 @@ export default function RecordScreen() {
 
   const setRecordAction = (action: RecordState) => {
     switch (action) {
-      case "PlayBack":
+      case "playBack":
         return;
-      case "Validate":
+      case "validate":
         navigation.navigate("EditorScreen");
         return;
-      case "Play":
+      case "play":
         setIsRecording((prev) => !prev);
         return;
     }
@@ -81,5 +78,3 @@ export default function RecordScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({});

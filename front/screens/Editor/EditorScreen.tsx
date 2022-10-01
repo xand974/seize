@@ -4,11 +4,9 @@ import React from "react";
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
   Image,
   Dimensions,
-  ScrollView,
 } from "react-native";
 import RecordFooter from "screens/Record/components/RecordFooter";
 import tw from "twrnc";
@@ -23,16 +21,16 @@ export default function EditorScreen() {
   const [isPlaying, setIsPlaying] = useState(false);
   const setRecordAction = (action: RecordState) => {
     switch (action) {
-      case "Play":
+      case "play":
         return;
-      case "PlayBack":
+      case "playBack":
         return;
-      case "Validate":
+      case "validate":
         navigation.navigate("RenderingScreen");
         return;
-      case "SeePreview":
+      case "seePreview":
         return;
-      case "UploadImage":
+      case "uploadImage":
         return;
     }
   };
@@ -46,7 +44,7 @@ export default function EditorScreen() {
           Dimensions.get("window").height
         }px] top-0 left-0 opacity-90`}
       />
-      <View style={tw`h-full`}>
+      <View style={tw`h-7/12`}>
         <View style={tw`w-11/12 mx-auto mt-10`}>
           <CtmText type="MontserratSemiBold" style="text-2xl text-center">
             pop_smoke
@@ -57,15 +55,14 @@ export default function EditorScreen() {
           </CtmText>
         </View>
       </View>
-      <Spectrum></Spectrum>
-
-      <RecordFooter
-        type="edit"
-        isRecording={isPlaying}
-        setRecordAction={setRecordAction}
-      ></RecordFooter>
+      <View>
+        <Spectrum />
+        <RecordFooter
+          type="edit"
+          isRecording={isPlaying}
+          setRecordAction={setRecordAction}
+        ></RecordFooter>
+      </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({});

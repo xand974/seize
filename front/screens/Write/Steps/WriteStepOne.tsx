@@ -245,17 +245,18 @@ export default function WriteStepOne() {
   useEffect(() => {
     if (!canMove) return;
     const key = getNextKey();
+
     focusLineByKey(key);
     setCanMove(false);
   }, [canMove, line.key]);
 
   useEffect(() => {
-    setRefs((prev) => {
-      prev = [];
+    setRefs(() => {
+      let newRefs = [] as RefObject<TextInput>[];
       for (let i = 0; i < currentText.length; i++) {
-        prev.push(React.createRef());
+        newRefs = [...newRefs, React.createRef()];
       }
-      return prev;
+      return newRefs;
     });
     setCanMove(true);
   }, [currentText.length]);
