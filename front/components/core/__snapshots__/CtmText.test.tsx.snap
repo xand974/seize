@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render custom text component should render the CtmText Component 1`] = `
+<Text
+  style={
+    {
+      "color": "#fff",
+      "fontFamily": "MontserratBold",
+    }
+  }
+>
+  TEST
+</Text>
+`;
